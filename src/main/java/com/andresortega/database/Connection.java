@@ -4,29 +4,24 @@
  */
 package com.andresortega.database;
 
-import org.hibernate.Session;
+import com.andresortega.model.Car;
+import com.andresortega.model.Customer;
+import com.andresortega.model.Repair;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AvailableSettings;
-import org.hibernate.tool.schema.Action;
 
 /**
  *
  * @author Andrés
  */
-public class Connection{
-
-    static SessionFactory sf;
-
-    public Connection() {
-        createSessionFactory();
-    }
+public class Connection {
     
-    
-    private static void createSessionFactory() {
-        sf = new org.hibernate.cfg.Configuration()
+    public static SessionFactory createSessionFactory() {
+        return new org.hibernate.cfg.Configuration()
                 // Entity 
-                // .addAnnotatedClass(Book.class)
-                // .addAnnotatedClass(Author.class)
+                .addAnnotatedClass(Car.class)
+                .addAnnotatedClass(Customer.class)
+                .addAnnotatedClass(Repair.class)
                 // MySQL
                 .setProperty(AvailableSettings.JAKARTA_JDBC_URL,
                         new org.hibernate.cfg.Configuration().getProperty("jakarta.persistence.jdbc.url"))
@@ -45,14 +40,4 @@ public class Connection{
                 // Create a new SessionFactory
                 .buildSessionFactory();
     }
-
-    public static Session getSession() {
-        return sf.getCurrentSession();
-    }
-    
-    public static Session openSesion(){
-        return sf.openSession();
-    }
-    
-
 }
