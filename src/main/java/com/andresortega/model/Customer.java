@@ -7,16 +7,11 @@ package com.andresortega.model;
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.ForeignKey;
 import jakarta.persistence.GeneratedValue;
 import static jakarta.persistence.GenerationType.IDENTITY;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.util.Objects;
-import java.util.Set;
 import org.hibernate.annotations.JavaType;
 import org.hibernate.annotations.NaturalId;
 import org.hibernate.type.descriptor.java.IntegerJavaType;
@@ -48,13 +43,6 @@ public class Customer {
     @JavaType(IntegerJavaType.class)
     @Column(nullable = false)
     public int age;
-    
-    @OneToMany(mappedBy = "customer")
-    @JoinTable(name = "Repairs",
-            joinColumns = @JoinColumn(name = "repairId"),
-            inverseJoinColumns = @JoinColumn(name = "customerId"),
-            foreignKey = @ForeignKey(name = "RepairsToCustomer"))
-    public Set<Repair> repairs;
     
     public Customer() {
     }

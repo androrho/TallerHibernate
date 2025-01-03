@@ -13,7 +13,6 @@ import jakarta.persistence.GeneratedValue;
 import static jakarta.persistence.GenerationType.IDENTITY;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import java.time.LocalDateTime;
@@ -35,14 +34,12 @@ public class Repair {
     int repairId;
 
     @ManyToOne(fetch = LAZY, optional = false)
-    @JoinTable(name = "Cars")
-    @JoinColumn(name = "licensePlate", referencedColumnName = "licensePlate",
+    @JoinColumn(name = "carId", referencedColumnName = "carId",
             foreignKey = @ForeignKey(name = "fk_car"))
     Car car;
 
     @ManyToOne(fetch = LAZY)
-    @JoinTable(name = "Customers")
-    @JoinColumn(name = "dni", referencedColumnName = "dni",
+    @JoinColumn(name = "customerId", referencedColumnName = "customerId",
             foreignKey = @ForeignKey(name = "fk_customer"))
     Customer customer;
 

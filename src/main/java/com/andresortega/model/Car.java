@@ -1,23 +1,15 @@
 package com.andresortega.model;
 
-import com.andresortega.model.cosas.EngineTypeConverter;
-import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
-import jakarta.persistence.Convert;
-import jakarta.persistence.Converter;
 import jakarta.persistence.Entity;
-import jakarta.persistence.ForeignKey;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import static jakarta.persistence.GenerationType.IDENTITY;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import java.util.EnumSet;
 import java.util.Objects;
-import java.util.Set;
 import org.hibernate.annotations.JavaType;
 import org.hibernate.annotations.NaturalId;
 import org.hibernate.type.descriptor.java.StringJavaType;
@@ -28,7 +20,7 @@ import org.hibernate.type.descriptor.java.StringJavaType;
  */
 @Entity
 @Table(name = "Cars")
-class Car {
+public class Car {
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
@@ -50,18 +42,10 @@ class Car {
     @Column(length = 45, nullable = false)
     String model;
 
-    @Convert(converter = EngineTypeConverter.class)
+    @Enumerated(EnumType.ORDINAL)
     @Basic(optional = false)
     @Column(nullable = false)
     EngineType engineType;
-
-    
-    @OneToMany(mappedBy = "car")
-    @JoinTable(name = "Repairs",
-            joinColumns = @JoinColumn(name = "repairId"),
-            inverseJoinColumns = @JoinColumn(name = "carId"),
-            foreignKey = @ForeignKey(name = "RepairsToCar"))
-    Set<Repair> repairs;
     
     public Car() {
     }
@@ -95,33 +79,5 @@ class Car {
         final Car other = (Car) obj;
         return Objects.equals(this.licensePlate, other.licensePlate);
     }
-
-    @Converter(autoApply = true)
-    public static class EnumSetConverter implements AttributeConverter<EnumSet<EngineType>, Integer> {
-
-        @Override
-        public Integer convertToDatabaseColumn(EnumSet<EngineType> enumSet) {
-            int encoded = 0;
-            var values = EngineType.values();
-            for (int i = 0; i < values.length; i++) {
-                if (enumSet.contains(values[i])) {
-                    encoded |= 1 << i;
-                }
-            }
-            return encoded;
-        }
-
-        @Override
-        public EnumSet<EngineType> convertToEntityAttribute(Integer encoded) {
-            var set = EnumSet.noneOf(EngineType.class);
-            var values = EngineType.values();
-            for (int i = 0; i < values.length; i++) {
-                if (((1 << i) & encoded) != 0) {
-                    set.add(values[i]);
-                }
-            }
-            return set;
-        }
-    }
-
+    
 }
