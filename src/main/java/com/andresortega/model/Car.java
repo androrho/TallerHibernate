@@ -24,28 +24,28 @@ public class Car {
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
-    int carId;
+    private int carId;
 
     @NaturalId
     @Basic(optional = false)
     @JavaType(StringJavaType.class)
     @Column(length = 9, nullable = false, unique = true)
-    String licensePlate;
+    private String licensePlate;
 
     @Basic(optional = false)
     @JavaType(StringJavaType.class)
     @Column(length = 45, nullable = false)
-    String brand;
+    private String brand;
 
     @Basic(optional = false)
     @JavaType(StringJavaType.class)
     @Column(length = 45, nullable = false)
-    String model;
+    private String model;
 
     @Enumerated(EnumType.ORDINAL)
     @Basic(optional = false)
     @Column(nullable = false)
-    EngineType engineType;
+    private EngineType engineType;
     
     public Car() {
     }
@@ -79,5 +79,47 @@ public class Car {
         final Car other = (Car) obj;
         return Objects.equals(this.licensePlate, other.licensePlate);
     }
+
+    public int getCarId() {
+        return carId;
+    }
+
+    public void setCarId(int carId) {
+        this.carId = carId;
+    }
+
+    public String getLicensePlate() {
+        return licensePlate;
+    }
+
+    public void setLicensePlate(String licensePlate) {
+        this.licensePlate = licensePlate;
+    }
+
+    public String getBrand() {
+        return brand;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public EngineType getEngineType() {
+        return engineType;
+    }
+
+    public void setEngineType(EngineType engineType) {
+        this.engineType = engineType;
+    }
+
+    
     
 }

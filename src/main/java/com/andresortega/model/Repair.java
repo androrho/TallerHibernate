@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.andresortega.model;
 
 import jakarta.persistence.Basic;
@@ -31,32 +27,32 @@ public class Repair {
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
-    int repairId;
+    private int repairId;
 
     @ManyToOne(fetch = LAZY, optional = false)
     @JoinColumn(name = "carId", referencedColumnName = "carId",
             foreignKey = @ForeignKey(name = "fk_car"))
-    Car car;
+    private Car car;
 
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "customerId", referencedColumnName = "customerId",
             foreignKey = @ForeignKey(name = "fk_customer"))
-    Customer customer;
+    private Customer customer;
 
     @Basic(optional = false)
     @JavaType(FloatJavaType.class)
     @Column(nullable = false)
-    Float price;
+    private Float price;
 
     @Basic(optional = false)
     @JavaType(LocalDateTimeJavaType.class)
     @Column(nullable = false)
-    LocalDateTime date;
+    private LocalDateTime date;
 
     @Basic(optional = false)
     @JavaType(StringJavaType.class)
     @Column(length = 200, nullable = false)
-    String description;
+    private String description;
 
     public Repair() {
     }
@@ -92,4 +88,54 @@ public class Repair {
         return this.repairId == other.repairId;
     }
 
+    public int getRepairId() {
+        return repairId;
+    }
+
+    public void setRepairId(int repairId) {
+        this.repairId = repairId;
+    }
+
+    public Car getCar() {
+        return car;
+    }
+
+    public void setCar(Car car) {
+        this.car = car;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public Float getPrice() {
+        return price;
+    }
+
+    public void setPrice(Float price) {
+        this.price = price;
+    }
+
+    public LocalDateTime getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDateTime date) {
+        this.date = date;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    
+    
 }

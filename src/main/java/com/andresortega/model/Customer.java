@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.andresortega.model;
 
 import jakarta.persistence.Basic;
@@ -27,22 +23,22 @@ public class Customer {
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
-    public int customerId;
+    private int customerId;
 
     @NaturalId
     @Basic(optional = false)
     @Column(length = 9, nullable = false, unique = true)
-    public String dni;
+    private String dni;
 
     @Basic(optional = false)
     @JavaType(StringJavaType.class)
     @Column(length = 45, nullable = false)
-    public String name;
+    private String name;
 
     @Basic(optional = false)
     @JavaType(IntegerJavaType.class)
     @Column(nullable = false)
-    public int age;
+    private int age;
     
     public Customer() {
     }
@@ -75,4 +71,36 @@ public class Customer {
         return Objects.equals(this.dni, other.dni);
     }
 
+    public int getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(int customerId) {
+        this.customerId = customerId;
+    }
+
+    public String getDni() {
+        return dni;
+    }
+
+    public void setDni(String dni) {
+        this.dni = dni;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+    
 }
