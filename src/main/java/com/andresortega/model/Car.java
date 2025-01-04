@@ -50,8 +50,7 @@ public class Car {
     public Car() {
     }
 
-    public Car(int carId, String licensePlate, String brand, String model, EngineType engineType) {
-        this.carId = carId;
+    public Car(String licensePlate, String brand, String model, EngineType engineType) {
         this.licensePlate = licensePlate;
         this.brand = brand;
         this.model = model;
