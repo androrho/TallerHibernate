@@ -57,8 +57,7 @@ public class Repair {
     public Repair() {
     }
 
-    public Repair(int repairId, Car car, Customer customer, Float price, LocalDateTime date, String description) {
-        this.repairId = repairId;
+    public Repair(Car car, Customer customer, Float price, LocalDateTime date, String description) {
         this.car = car;
         this.customer = customer;
         this.price = price;
