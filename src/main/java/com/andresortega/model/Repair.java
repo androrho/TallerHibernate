@@ -3,6 +3,8 @@ package com.andresortega.model;
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import static jakarta.persistence.FetchType.LAZY;
 import jakarta.persistence.ForeignKey;
 import jakarta.persistence.GeneratedValue;
@@ -53,16 +55,22 @@ public class Repair {
     @JavaType(StringJavaType.class)
     @Column(length = 200, nullable = false)
     private String description;
+    
+    @Enumerated(EnumType.ORDINAL)
+    @Basic(optional = false)
+    @Column(nullable = false)
+    private RepairState repairState;
 
     public Repair() {
     }
 
-    public Repair(Car car, Customer customer, Float price, LocalDateTime date, String description) {
+    public Repair(Car car, Customer customer, Float price, LocalDateTime date, String description, RepairState repairState) {
         this.car = car;
         this.customer = customer;
         this.price = price;
         this.date = date;
         this.description = description;
+        this.repairState = repairState;
     }
 
     @Override
@@ -133,6 +141,14 @@ public class Repair {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+    
+    public RepairState getRepairState() {
+        return repairState;
+    }
+
+    public void setRepairState(RepairState repairState) {
+        this.repairState = repairState;
     }
 
 }
