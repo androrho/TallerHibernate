@@ -119,6 +119,4 @@ public class Car {
         this.engineType = engineType;
     }
 
-    
-    
 }

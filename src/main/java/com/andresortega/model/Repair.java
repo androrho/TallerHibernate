@@ -135,6 +135,4 @@ public class Repair {
         this.description = description;
     }
 
-    
-    
 }
