@@ -1,4 +1,4 @@
-package com.andresortega.model;
+package com.andresortega.cosas;
 
 /**
  *
@@ -7,7 +7,10 @@ package com.andresortega.model;
 public class ORM {
 
     public static void main(String[] args) {
+        
+        
+        
     }
-    
+
     
 }
