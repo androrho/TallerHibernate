@@ -64,6 +64,15 @@ public class Repair {
     public Repair() {
     }
 
+    public Repair(Car car, Customer customer, Float price, String description) {
+        this.car = car;
+        this.customer = customer;
+        this.price = price;
+        this.date = LocalDateTime.now();
+        this.description = description;
+        this.repairState = RepairState.PENDING;
+    }
+    
     public Repair(Car car, Customer customer, Float price, LocalDateTime date, String description, RepairState repairState) {
         this.car = car;
         this.customer = customer;
