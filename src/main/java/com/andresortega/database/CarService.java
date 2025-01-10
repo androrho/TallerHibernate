@@ -3,6 +3,7 @@ package com.andresortega.database;
 import com.andresortega.model.Car;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
+import jakarta.persistence.NoResultException;
 
 /**
  *
@@ -46,14 +47,24 @@ public class CarService {
     public static Car read(String licensePlate) {
         EntityManager em = PersistenceUtil.getEntityManagerFactory().createEntityManager();
         EntityTransaction tx = em.getTransaction();
-        tx.begin();
-        String hql = "SELECT c FROM Car c WHERE c.licensePlate = :licensePlate";
-        Car object = em.createQuery(hql, Car.class)
-                .setParameter("licensePlate", licensePlate)
-                .getSingleResult();
-        tx.commit();
-        em.close();
-        return object;
+        Car car = null;
+
+        try {
+            tx.begin();
+            String hql = "SELECT c FROM Car c WHERE c.licensePlate = :licensePlate";
+            car = em.createQuery(hql, Car.class)
+                    .setParameter("licensePlate", licensePlate)
+                    .getSingleResult();
+            tx.commit();
+        } catch (NoResultException e) {
+            System.out.println("No se encontró ningún coche con la matrícula: " + licensePlate);
+            tx.rollback();
+        } catch (Exception e) {
+            tx.rollback();
+        } finally {
+            em.close();
+        }
+        return car;
     }
 
     public static Car read(Car object) {
@@ -75,16 +86,25 @@ public class CarService {
         em.close();
     }
 
-    public static void delete(String licensePlate) {
+    public static boolean delete(String licensePlate) {
         EntityManager em = PersistenceUtil.getEntityManagerFactory().createEntityManager();
         EntityTransaction tx = em.getTransaction();
-        tx.begin();
-        String hql = "DELETE FROM Car c WHERE c.licensePlate = :licensePlate";
-        em.createQuery(hql)
-                .setParameter("licensePlate", licensePlate)
-                .executeUpdate();
-        tx.commit();
-        em.close();
+        boolean deleted = false;
+
+        try {
+            tx.begin();
+            String hql = "DELETE FROM Car c WHERE c.licensePlate = :licensePlate";
+            int rowsAffected = em.createQuery(hql)
+                    .setParameter("licensePlate", licensePlate)
+                    .executeUpdate();
+            tx.commit();
+            deleted = rowsAffected > 0;
+        } catch (Exception e) {
+            tx.rollback();
+        } finally {
+            em.close();
+        }
+        return deleted;
     }
 
     public static void delete(Car object) {

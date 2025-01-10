@@ -3,6 +3,7 @@ package com.andresortega.database;
 import com.andresortega.model.Customer;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
+import jakarta.persistence.NoResultException;
 
 /**
  *
@@ -38,14 +39,24 @@ public class CustomerService {
     public static Customer read(String dni) {
         EntityManager em = PersistenceUtil.getEntityManagerFactory().createEntityManager();
         EntityTransaction tx = em.getTransaction();
-        tx.begin();
-        String hql = "SELECT c FROM Customer c WHERE c.dni = :dni";
-        Customer object = em.createQuery(hql, Customer.class)
-                .setParameter("dni", dni)
-                .getSingleResult();
-        tx.commit();
-        em.close();
-        return object;
+        Customer customer = null;
+        
+        try {
+            tx.begin();
+            String hql = "SELECT c FROM Customer c WHERE c.dni = :dni";
+            customer = em.createQuery(hql, Customer.class)
+                    .setParameter("dni", dni)
+                    .getSingleResult();
+            tx.commit();
+        } catch (NoResultException e) {
+            System.out.println("No se encontró ningún cliente con el dni: " + dni);
+            tx.rollback();
+        } catch (Exception e) {
+            tx.rollback();
+        } finally {
+            em.close();
+        }
+        return customer;
     }
 
     public static Customer read(Customer object) {
@@ -67,16 +78,26 @@ public class CustomerService {
         em.close();
     }
 
-    public static void delete(String dni) {
+    public static boolean delete(String dni) {
         EntityManager em = PersistenceUtil.getEntityManagerFactory().createEntityManager();
         EntityTransaction tx = em.getTransaction();
-        tx.begin();
+        boolean deleted = false;
+        
+        try {
+            tx.begin();
         String hql = "DELETE FROM Customer c WHERE c.dni = :dni";
-        em.createQuery(hql)
+        int rowsAffected = em.createQuery(hql)
                 .setParameter("dni", dni)
                 .executeUpdate();
         tx.commit();
-        em.close();
+        deleted = rowsAffected > 0;
+        } catch (Exception e) {
+            tx.rollback();
+        } finally {
+            em.close();
+        }
+        
+        return deleted;
     }
 
     public static void delete(Customer object) {
