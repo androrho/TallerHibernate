@@ -43,6 +43,10 @@ public class Customer {
     public Customer() {
     }
 
+    public Customer(String dni) {
+        this.dni = dni;
+    }
+
     public Customer(String dni, String name, int age) {
         this.dni = dni;
         this.name = name;

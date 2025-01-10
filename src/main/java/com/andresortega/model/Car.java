@@ -50,6 +50,10 @@ public class Car {
     public Car() {
     }
 
+    public Car(String licensePlate) {
+        this.licensePlate = licensePlate;
+    }
+
     public Car(String licensePlate, String brand, String model, EngineType engineType) {
         this.licensePlate = licensePlate;
         this.brand = brand;
