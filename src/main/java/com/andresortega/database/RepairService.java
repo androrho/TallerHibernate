@@ -56,7 +56,7 @@ public class RepairService {
     public static String getRepairState(Integer id) {
         Repair repair = RepairService.read(id);
         if (repair != null) {
-            return "[\n   {\n      \"id\":" + id + ",\n      \"type\":\"repair\",\n      \"car\": \"" + repair.getDescription() + "\",\n      \"query\":\"success\"\n   }\n]";
+            return "[\n   {\n      \"id\":" + id + ",\n      \"type\":\"repair\",\n      \"car\": \"" + repair.getRepairState() + "\",\n      \"query\":\"success\"\n   }\n]";
         }
         return "[\n   {\n      \"id\":" + id + ",\n      \"type\":\"repair\",\n      \"query\":\"failed\"\n   }\n]";
     }
