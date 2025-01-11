@@ -81,4 +81,17 @@ public class Actions {
     
     // Insertar reparación
     
+    
+    // Consulta historico reparaciones de coche
+    
+    
+    // Consulta historico reparaiones de coche
+    
+    
+    // Consulta histórico de coches que ha reparado un cliente
+    
+    
+    // Consulta histórico de coches que ha reparado un cliente
+    
+    
 }
