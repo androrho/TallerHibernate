@@ -103,4 +103,22 @@ public class Actions {
     // Consulta histórico de coches que ha reparado un cliente
     
     
+    // Actualizar datos de cliente
+    
+    
+    
+    // Actualizar datos de cliente
+    
+    
+    // Actualizar datos de coche
+    
+    
+    // Actualizar datos de coche
+    
+    
+    // Actualizar datos de reparación
+    
+    
+    // Actualizar datos de reparación
+    
 }
