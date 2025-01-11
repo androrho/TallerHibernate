@@ -11,7 +11,6 @@ import com.andresortega.model.Car;
 import com.andresortega.model.Customer;
 import com.andresortega.model.EngineType;
 import com.andresortega.model.Repair;
-import java.time.LocalDateTime;
 
 /**
  *
@@ -50,5 +49,36 @@ public class Actions {
         RepairService.create(re3);
     }
     
+    // Insertar reparación
+    
+    public static void insertRepair(Repair repair, String dni, String licensePlate){
+        
+        if (!customerExists(dni)) {
+            return;
+        }
+        if (!carExists(licensePlate)) {
+            return;
+        }
+        
+        Car car = CarService.read(licensePlate);
+        Customer customer = CustomerService.read(dni);
+        repair.setCar(car);
+        repair.setCustomer(customer);
+        RepairService.create(repair);
+    }
+    
+    private static boolean customerExists(String dni){
+        Customer customer = CustomerService.read(dni);
+        
+        return customer != null;
+    }
+    
+    private static boolean carExists(String licensePlate){
+        Car car = CarService.read(licensePlate);
+        
+        return car != null;
+    }
+    
+    // Insertar reparación
     
 }
