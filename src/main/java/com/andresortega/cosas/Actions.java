@@ -11,6 +11,7 @@ import com.andresortega.model.Car;
 import com.andresortega.model.Customer;
 import com.andresortega.model.EngineType;
 import com.andresortega.model.Repair;
+import java.util.List;
 
 /**
  *
@@ -69,13 +70,13 @@ public class Actions {
         RepairService.create(repair);
     }
     
-    private static boolean customerExists(String dni){
+    public static boolean customerExists(String dni){
         Customer customer = CustomerService.read(dni);
         
         return customer != null;
     }
     
-    private static boolean carExists(String licensePlate){
+    public static boolean carExists(String licensePlate){
         Car car = CarService.read(licensePlate);
         
         return car != null;
@@ -86,12 +87,18 @@ public class Actions {
     
     // Consulta historico reparaciones de coche
     
+    public static List<Repair> carRepairHistory(Car car) {
+        return RepairService.findByCar(car);
+    }
     
     // Consulta historico reparaiones de coche
     
     
     // Consulta histórico de coches que ha reparado un cliente
     
+    public static List<Repair> customerRepairHistory(Customer customer) {
+        return RepairService.findByCustomer(customer);
+    }
     
     // Consulta histórico de coches que ha reparado un cliente
     
