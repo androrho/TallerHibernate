@@ -43,10 +43,12 @@ public class Actions {
         
         Repair re = new Repair(ca, cu, 2000.0f, "Luna delantera");
         RepairService.create(re);
-        Repair re2 = new Repair(ca, cu, 5000.0f, "Cinturón de seguridad");
+        Repair re2 = new Repair(ca, cu2, 5000.0f, "Cinturón de seguridad");
         RepairService.create(re2);
-        Repair re3 = new Repair(ca, cu2, 1500.7f, "Pastillas de freno");
+        Repair re3 = new Repair(ca2, cu, 1500.7f, "Pastillas de freno");
         RepairService.create(re3);
+        Repair re4 = new Repair(ca2, cu2, 57000.0f, "Reconstrucción del motor");
+        RepairService.create(re4);
     }
     
     // Insertar reparación
