@@ -62,6 +62,8 @@ public class Repair {
     private RepairState repairState;
 
     public Repair() {
+        this.date = LocalDateTime.now();
+        this.repairState = RepairState.PENDING;
     }
 
     public Repair(Car car, Customer customer, Float price, String description) {
