@@ -105,19 +105,27 @@ public class Actions {
     
     // Actualizar datos de cliente
     
-    
+    public static void updateCustomer(Customer customer){
+        CustomerService.update(customer);
+    }
     
     // Actualizar datos de cliente
     
     
     // Actualizar datos de coche
     
+    public static void updateCar(Car car){
+        CarService.update(car);
+    }
     
     // Actualizar datos de coche
     
     
     // Actualizar datos de reparación
     
+    public static void updateRepair(Repair repair){
+        RepairService.update(repair);
+    }
     
     // Actualizar datos de reparación
     
