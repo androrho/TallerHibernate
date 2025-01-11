@@ -4,20 +4,21 @@
     <description>
             Persistence unit for the Jakarta Persistence tutorial of the Hibernate Getting Started Guide
         </description>
+    <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
     <class>com.andresortega.model.Car</class>
     <class>com.andresortega.model.Customer</class>
     <class>com.andresortega.model.Repair</class>
     <properties>
       <!-- Database connection settings -->
-      <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://andresortega.dev:3306/garage"/>
-      <property name="jakarta.persistence.jdbc.user" value="root"/>
-      <property name="jakarta.persistence.jdbc.password" value="im)Qq~Ac,{;OwDv31u"/>
       <!-- Automatically export the schema -->
-      <property name="jakarta.persistence.schema-generation.database.action" value="drop-and-create"/>
       <!-- Echo all executed SQL to console -->
       <property name="hibernate.show_sql" value="true"/>
       <property name="hibernate.format_sql" value="true"/>
       <property name="hibernate.highlight_sql" value="true"/>
+      <property name="jakarta.persistence.jdbc.url" value=""/>
+      <property name="jakarta.persistence.jdbc.user" value=""/>
+      <property name="jakarta.persistence.jdbc.driver" value=""/>
+      <property name="jakarta.persistence.jdbc.password" value=""/>
     </properties>
   </persistence-unit>
 </persistence>
