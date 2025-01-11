@@ -5,6 +5,8 @@ import com.andresortega.model.Customer;
 import com.andresortega.model.Repair;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
+import jakarta.persistence.NoResultException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -133,13 +135,23 @@ public class RepairService {
     public static List<Repair> findByCar(Car car) {
         EntityManager em = PersistenceUtil.getEntityManagerFactory().createEntityManager();
         EntityTransaction tx = em.getTransaction();
-        tx.begin();
-        String hql = "SELECT c FROM Car c WHERE c.name LIKE :name";
-        List<Repair> list = em.createQuery(hql)
-                .setParameter("name", "%" + car.getCarId() + "%")
-                .getResultList();
-        tx.commit();
-        em.close();
+        List<Repair> list = new ArrayList();
+
+        try {
+            tx.begin();
+            String hql = "SELECT r FROM Repair r WHERE r.car = :car";
+            list = em.createQuery(hql, Repair.class)
+                    .setParameter("car", car)
+                    .getResultList();
+            tx.commit();
+        } catch (NoResultException e) {
+            System.out.println("Ese coche no ha tenido reparaciones");
+            tx.rollback();
+        } catch (Exception e) {
+            tx.rollback();
+        } finally {
+            em.close();
+        }
         return list;
     }
 
