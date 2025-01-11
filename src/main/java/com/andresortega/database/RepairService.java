@@ -6,6 +6,7 @@ import com.andresortega.model.Repair;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.NoResultException;
+import jakarta.persistence.RollbackException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -66,10 +67,40 @@ public class RepairService {
     public static void create(Repair object) {
         EntityManager em = PersistenceUtil.getEntityManagerFactory().createEntityManager();
         EntityTransaction tx = em.getTransaction();
-        tx.begin();
-        em.persist(object);
-        tx.commit();
-        em.close();
+        try {
+            tx.begin();
+            em.persist(object);
+            tx.commit();
+            em.close();
+        } catch (RollbackException e) {
+            tx.rollback();
+        } catch (Exception e) {
+            tx.rollback();
+        } finally {
+            em.close();
+        }
+    }
+
+    public static List<Repair> read() {
+        EntityManager em = PersistenceUtil.getEntityManagerFactory().createEntityManager();
+        EntityTransaction tx = em.getTransaction();
+        List<Repair> list = new ArrayList();
+
+        try {
+            tx.begin();
+            String hql = "SELECT r FROM Repair r";
+            list = em.createQuery(hql, Repair.class)
+                    .getResultList();
+            tx.commit();
+        } catch (NoResultException e) {
+            System.out.println("No hay reparaciones");
+            tx.rollback();
+        } catch (Exception e) {
+            tx.rollback();
+        } finally {
+            em.close();
+        }
+        return list;
     }
 
     public static Repair read(Integer id) {
@@ -95,10 +126,18 @@ public class RepairService {
     public static void update(Repair object) {
         EntityManager em = PersistenceUtil.getEntityManagerFactory().createEntityManager();
         EntityTransaction tx = em.getTransaction();
-        tx.begin();
-        em.merge(object);
-        tx.commit();
-        em.close();
+        try {
+            tx.begin();
+            em.merge(object);
+            tx.commit();
+            em.close();
+        } catch (RollbackException e) {
+            tx.rollback();
+        } catch (Exception e) {
+            tx.rollback();
+        } finally {
+            em.close();
+        }
     }
 
     public static void delete(Integer id) {
