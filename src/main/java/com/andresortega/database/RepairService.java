@@ -122,13 +122,23 @@ public class RepairService {
     public static List<Repair> findByCustomer(Customer customer) {
         EntityManager em = PersistenceUtil.getEntityManagerFactory().createEntityManager();
         EntityTransaction tx = em.getTransaction();
-        tx.begin();
-        String hql = "SELECT c FROM Car c WHERE c.name LIKE :name";
-        List<Repair> list = em.createQuery(hql)
-                .setParameter("name", "%" + customer.getCustomerId() + "%")
-                .getResultList();
-        tx.commit();
-        em.close();
+        List<Repair> list = new ArrayList();
+
+        try {
+            tx.begin();
+            String hql = "SELECT r FROM Repair r WHERE r.customer = :customer";
+            list = em.createQuery(hql, Repair.class)
+                    .setParameter("customer", customer)
+                    .getResultList();
+            tx.commit();
+        } catch (NoResultException e) {
+            System.out.println("Ese cliente no ha efectuado reparaciones");
+            tx.rollback();
+        } catch (Exception e) {
+            tx.rollback();
+        } finally {
+            em.close();
+        }
         return list;
     }
 
