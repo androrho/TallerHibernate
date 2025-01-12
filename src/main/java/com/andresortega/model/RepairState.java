@@ -19,5 +19,5 @@ public enum RepairState {
      * The singleton instance for the day-of-week of Thursday. This has the
      * numeric value of {@code 4}.
      */
-    FINISHED;
+    COMPLETED,
 }
