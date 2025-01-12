@@ -20,4 +20,8 @@ public enum RepairState {
      * numeric value of {@code 4}.
      */
     COMPLETED,
+    
+    PICK_UP,
+    
+    PICKED_UP;
 }
