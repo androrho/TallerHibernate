@@ -8,16 +8,57 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Reparaciones"/>
           </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="mnuAddRepair">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="A&#xf1;adir Reparaciones"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="mnuModifyRepair">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Modificar Reparaciones"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="mnuDeleteRepair">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Eliminar Reparaciones"/>
+              </Properties>
+            </MenuItem>
+          </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenu2">
           <Properties>
             <Property name="text" type="java.lang.String" value="Clientes"/>
           </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="mnuAddCustomer">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="A&#xf1;adir Cliente"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="mnuCustomerRepairHistory">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Hist&#xf3;rico Reparaciones"/>
+              </Properties>
+            </MenuItem>
+          </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenu3">
           <Properties>
             <Property name="text" type="java.lang.String" value="Coches"/>
           </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="mnuAddCar">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="A&#xf1;adir Coche"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="mnuCarRepairHistory">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Hist&#xf3;rico Reparaciones"/>
+              </Properties>
+            </MenuItem>
+          </SubComponents>
         </Menu>
       </SubComponents>
     </Menu>

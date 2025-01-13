@@ -28,18 +28,49 @@ public class MainWindow extends javax.swing.JFrame {
 
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
+        mnuAddRepair = new javax.swing.JMenuItem();
+        mnuModifyRepair = new javax.swing.JMenuItem();
+        mnuDeleteRepair = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
+        mnuAddCustomer = new javax.swing.JMenuItem();
+        mnuCustomerRepairHistory = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
+        mnuAddCar = new javax.swing.JMenuItem();
+        mnuCarRepairHistory = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jMenu1.setText("Reparaciones");
+
+        mnuAddRepair.setText("Añadir Reparaciones");
+        jMenu1.add(mnuAddRepair);
+
+        mnuModifyRepair.setText("Modificar Reparaciones");
+        jMenu1.add(mnuModifyRepair);
+
+        mnuDeleteRepair.setText("Eliminar Reparaciones");
+        jMenu1.add(mnuDeleteRepair);
+
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Clientes");
+
+        mnuAddCustomer.setText("Añadir Cliente");
+        jMenu2.add(mnuAddCustomer);
+
+        mnuCustomerRepairHistory.setText("Histórico Reparaciones");
+        jMenu2.add(mnuCustomerRepairHistory);
+
         jMenuBar1.add(jMenu2);
 
         jMenu3.setText("Coches");
+
+        mnuAddCar.setText("Añadir Coche");
+        jMenu3.add(mnuAddCar);
+
+        mnuCarRepairHistory.setText("Histórico Reparaciones");
+        jMenu3.add(mnuCarRepairHistory);
+
         jMenuBar1.add(jMenu3);
 
         setJMenuBar(jMenuBar1);
@@ -93,11 +124,56 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
     }
-
+    /*
+    private void deletePanels() {
+        try {
+            remove(gerenteAlta);
+            pack();
+        } catch (java.lang.NullPointerException ex) {
+        }
+        try {
+            remove(gerenteConsulta);
+            pack();
+        } catch (java.lang.NullPointerException ex) {
+        }
+        try {
+            remove(gerenteModificacion);
+            pack();
+        } catch (java.lang.NullPointerException ex) {
+        }
+        try {
+            remove(gerenteAperturaCuentas);
+            pack();
+        } catch (java.lang.NullPointerException ex) {
+        }
+        try {
+            remove(gerentePrestamos);
+            pack();
+        } catch (java.lang.NullPointerException ex) {
+        }
+        try {
+            remove(cajeroTransacciones);
+            pack();
+        } catch (java.lang.NullPointerException ex) {
+        }
+        try {
+            remove(cajeroPrestamos);
+            pack();
+        } catch (java.lang.NullPointerException ex) {
+        }
+    }
+    */
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem mnuAddCar;
+    private javax.swing.JMenuItem mnuAddCustomer;
+    private javax.swing.JMenuItem mnuAddRepair;
+    private javax.swing.JMenuItem mnuCarRepairHistory;
+    private javax.swing.JMenuItem mnuCustomerRepairHistory;
+    private javax.swing.JMenuItem mnuDeleteRepair;
+    private javax.swing.JMenuItem mnuModifyRepair;
     // End of variables declaration//GEN-END:variables
 }
