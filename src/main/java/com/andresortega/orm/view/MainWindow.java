@@ -66,12 +66,27 @@ public class MainWindow extends javax.swing.JFrame {
         jMenu1.setText("Reparaciones");
 
         mnuAddRepair.setText("Añadir Reparaciones");
+        mnuAddRepair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuAddRepairActionPerformed(evt);
+            }
+        });
         jMenu1.add(mnuAddRepair);
 
         mnuModifyRepair.setText("Modificar Reparaciones");
+        mnuModifyRepair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuModifyRepairActionPerformed(evt);
+            }
+        });
         jMenu1.add(mnuModifyRepair);
 
         mnuDeleteRepair.setText("Eliminar Reparaciones");
+        mnuDeleteRepair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuDeleteRepairActionPerformed(evt);
+            }
+        });
         jMenu1.add(mnuDeleteRepair);
 
         jMenuBar1.add(jMenu1);
@@ -79,12 +94,27 @@ public class MainWindow extends javax.swing.JFrame {
         jMenu2.setText("Clientes");
 
         mnuAddCustomer.setText("Añadir Cliente");
+        mnuAddCustomer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuAddCustomerActionPerformed(evt);
+            }
+        });
         jMenu2.add(mnuAddCustomer);
 
         mnuModifyCustomer.setText("Modificar Cliente");
+        mnuModifyCustomer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuModifyCustomerActionPerformed(evt);
+            }
+        });
         jMenu2.add(mnuModifyCustomer);
 
         mnuCustomerRepairHistory.setText("Histórico Reparaciones");
+        mnuCustomerRepairHistory.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuCustomerRepairHistoryActionPerformed(evt);
+            }
+        });
         jMenu2.add(mnuCustomerRepairHistory);
 
         jMenuBar1.add(jMenu2);
@@ -92,13 +122,28 @@ public class MainWindow extends javax.swing.JFrame {
         jMenu3.setText("Coches");
 
         mnuAddCar.setText("Añadir Coche");
+        mnuAddCar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuAddCarActionPerformed(evt);
+            }
+        });
         jMenu3.add(mnuAddCar);
 
         mnuModifyCar.setText("Modificar Coche");
         mnuModifyCar.setToolTipText("");
+        mnuModifyCar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuModifyCarActionPerformed(evt);
+            }
+        });
         jMenu3.add(mnuModifyCar);
 
         mnuCarRepairHistory.setText("Histórico Reparaciones");
+        mnuCarRepairHistory.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuCarRepairHistoryActionPerformed(evt);
+            }
+        });
         jMenu3.add(mnuCarRepairHistory);
 
         jMenuBar1.add(jMenu3);
@@ -119,6 +164,42 @@ public class MainWindow extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void mnuAddRepairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuAddRepairActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mnuAddRepairActionPerformed
+
+    private void mnuModifyRepairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuModifyRepairActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mnuModifyRepairActionPerformed
+
+    private void mnuDeleteRepairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuDeleteRepairActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mnuDeleteRepairActionPerformed
+
+    private void mnuAddCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuAddCustomerActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mnuAddCustomerActionPerformed
+
+    private void mnuModifyCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuModifyCustomerActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mnuModifyCustomerActionPerformed
+
+    private void mnuCustomerRepairHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuCustomerRepairHistoryActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mnuCustomerRepairHistoryActionPerformed
+
+    private void mnuAddCarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuAddCarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mnuAddCarActionPerformed
+
+    private void mnuModifyCarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuModifyCarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mnuModifyCarActionPerformed
+
+    private void mnuCarRepairHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuCarRepairHistoryActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mnuCarRepairHistoryActionPerformed
 
     /**
      * @param args the command line arguments
