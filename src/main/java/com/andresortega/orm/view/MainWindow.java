@@ -236,7 +236,7 @@ public class MainWindow extends javax.swing.JFrame {
         });
     }
     
-    private void addPanels(JPanel jpanel){
+    private void addPanel(JPanel jpanel){
         add(jpanel).setVisible(true);
         revalidate();
         repaint();
