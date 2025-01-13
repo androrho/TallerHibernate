@@ -36,6 +36,11 @@
                 <Property name="text" type="java.lang.String" value="A&#xf1;adir Cliente"/>
               </Properties>
             </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="mnuModifyCustomer">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Modificar Cliente"/>
+              </Properties>
+            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="mnuCustomerRepairHistory">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Hist&#xf3;rico Reparaciones"/>
@@ -51,6 +56,12 @@
             <MenuItem class="javax.swing.JMenuItem" name="mnuAddCar">
               <Properties>
                 <Property name="text" type="java.lang.String" value="A&#xf1;adir Coche"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="mnuModifyCar">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Modificar Coche"/>
+                <Property name="toolTipText" type="java.lang.String" value=""/>
               </Properties>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="mnuCarRepairHistory">

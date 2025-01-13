@@ -33,9 +33,11 @@ public class MainWindow extends javax.swing.JFrame {
         mnuDeleteRepair = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         mnuAddCustomer = new javax.swing.JMenuItem();
+        mnuModifyCustomer = new javax.swing.JMenuItem();
         mnuCustomerRepairHistory = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         mnuAddCar = new javax.swing.JMenuItem();
+        mnuModifyCar = new javax.swing.JMenuItem();
         mnuCarRepairHistory = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -58,6 +60,9 @@ public class MainWindow extends javax.swing.JFrame {
         mnuAddCustomer.setText("Añadir Cliente");
         jMenu2.add(mnuAddCustomer);
 
+        mnuModifyCustomer.setText("Modificar Cliente");
+        jMenu2.add(mnuModifyCustomer);
+
         mnuCustomerRepairHistory.setText("Histórico Reparaciones");
         jMenu2.add(mnuCustomerRepairHistory);
 
@@ -67,6 +72,10 @@ public class MainWindow extends javax.swing.JFrame {
 
         mnuAddCar.setText("Añadir Coche");
         jMenu3.add(mnuAddCar);
+
+        mnuModifyCar.setText("Modificar Coche");
+        mnuModifyCar.setToolTipText("");
+        jMenu3.add(mnuModifyCar);
 
         mnuCarRepairHistory.setText("Histórico Reparaciones");
         jMenu3.add(mnuCarRepairHistory);
@@ -174,6 +183,8 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JMenuItem mnuCarRepairHistory;
     private javax.swing.JMenuItem mnuCustomerRepairHistory;
     private javax.swing.JMenuItem mnuDeleteRepair;
+    private javax.swing.JMenuItem mnuModifyCar;
+    private javax.swing.JMenuItem mnuModifyCustomer;
     private javax.swing.JMenuItem mnuModifyRepair;
     // End of variables declaration//GEN-END:variables
 }
