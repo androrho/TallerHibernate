@@ -235,7 +235,13 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
     }
-
+    
+    private void addPanels(JPanel jpanel){
+        add(jpanel).setVisible(true);
+        revalidate();
+        repaint();
+    }
+    
     private void deletePanels() {
         for (Component comp : getContentPane().getComponents()) {
             if (comp instanceof JPanel) {
