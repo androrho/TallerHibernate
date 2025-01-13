@@ -22,15 +22,7 @@ import javax.swing.JPanel;
  */
 public class MainWindow extends javax.swing.JFrame {
 
-    AddCarPanel addCarPanel;
-    CarRepairHistoryPanel carRepairHistoryPanel;
-    ModifyCarPanel modifyCarPanel;
-    AddCustomerPanel addCustomerPanel;
-    CustomerRepairHistoryPanel customerRepairHistoryPanel;
-    ModifyCustomerPanel modifyCustomerPanel;
-    AddRepairPanel addRepairPanel;
-    DeleteRepairPanel deleteRepairPanel;
-    ModifyRepairPanel modifyRepairPanel;
+    JPanel panel;
     /**
      * Creates new form MainWindow
      */
@@ -166,39 +158,57 @@ public class MainWindow extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void mnuAddRepairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuAddRepairActionPerformed
-        // TODO add your handling code here:
+        deletePanels();
+        panel = new AddRepairPanel();
+        addPanel(panel);
     }//GEN-LAST:event_mnuAddRepairActionPerformed
 
     private void mnuModifyRepairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuModifyRepairActionPerformed
-        // TODO add your handling code here:
+        deletePanels();
+        panel = new AddRepairPanel();
+        addPanel(panel);
     }//GEN-LAST:event_mnuModifyRepairActionPerformed
 
     private void mnuDeleteRepairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuDeleteRepairActionPerformed
-        // TODO add your handling code here:
+        deletePanels();
+        panel = new AddRepairPanel();
+        addPanel(panel);
     }//GEN-LAST:event_mnuDeleteRepairActionPerformed
 
     private void mnuAddCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuAddCustomerActionPerformed
-        // TODO add your handling code here:
+        deletePanels();
+        panel = new AddRepairPanel();
+        addPanel(panel);
     }//GEN-LAST:event_mnuAddCustomerActionPerformed
 
     private void mnuModifyCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuModifyCustomerActionPerformed
-        // TODO add your handling code here:
+        deletePanels();
+        panel = new AddRepairPanel();
+        addPanel(panel);
     }//GEN-LAST:event_mnuModifyCustomerActionPerformed
 
     private void mnuCustomerRepairHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuCustomerRepairHistoryActionPerformed
-        // TODO add your handling code here:
+        deletePanels();
+        panel = new AddRepairPanel();
+        addPanel(panel);
     }//GEN-LAST:event_mnuCustomerRepairHistoryActionPerformed
 
     private void mnuAddCarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuAddCarActionPerformed
-        // TODO add your handling code here:
+        deletePanels();
+        panel = new AddRepairPanel();
+        addPanel(panel);
     }//GEN-LAST:event_mnuAddCarActionPerformed
 
     private void mnuModifyCarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuModifyCarActionPerformed
-        // TODO add your handling code here:
+        deletePanels();
+        panel = new AddRepairPanel();
+        addPanel(panel);
     }//GEN-LAST:event_mnuModifyCarActionPerformed
 
     private void mnuCarRepairHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuCarRepairHistoryActionPerformed
-        // TODO add your handling code here:
+        deletePanels();
+        panel = new AddRepairPanel();
+        addPanel(panel);
     }//GEN-LAST:event_mnuCarRepairHistoryActionPerformed
 
     /**
