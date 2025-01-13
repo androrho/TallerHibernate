@@ -1,19 +1,21 @@
+package com.andresortega.orm.view.car;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package com.andresortega.orm.view;
+
 
 /**
  *
  * @author dam
  */
-public class CarPanel extends javax.swing.JPanel {
+public class CarRepairHistoryPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form CarPanel
+     * Creates new form mnuCarRepairHistory
      */
-    public CarPanel() {
+    public CarRepairHistoryPanel() {
         initComponents();
     }
 

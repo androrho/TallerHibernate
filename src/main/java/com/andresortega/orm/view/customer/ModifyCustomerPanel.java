@@ -2,18 +2,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package com.andresortega.orm.view;
+package com.andresortega.orm.view.customer;
 
 /**
  *
  * @author dam
  */
-public class CustomerPanel extends javax.swing.JPanel {
+public class ModifyCustomerPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form CustomerPanel
+     * Creates new form mnuModifyCustomer
      */
-    public CustomerPanel() {
+    public ModifyCustomerPanel() {
         initComponents();
     }
 
