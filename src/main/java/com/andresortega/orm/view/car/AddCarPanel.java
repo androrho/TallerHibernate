@@ -1,7 +1,11 @@
 package com.andresortega.orm.view.car;
 
+import com.andresortega.database.CarService;
+import com.andresortega.model.Car;
 import com.andresortega.model.EngineType;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -122,7 +126,7 @@ public class AddCarPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnCleanActionPerformed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        // TODO add your handling code here:
+        save();
     }//GEN-LAST:event_btnSaveActionPerformed
     
     private void initComboBoxModel(){
@@ -134,6 +138,50 @@ public class AddCarPanel extends javax.swing.JPanel {
         txtBrand.setText("");
         txtModel.setText("");
         cmbEngineType.setSelectedIndex(-1);
+    }
+    
+    private void save(){
+        if (!areFieldsValid()){
+            return;
+        }
+        if (carExists()){
+            return;
+        }
+        saveCar();
+    }
+    
+    private boolean areFieldsValid(){
+        String licensePlate = this.txtLicensePlate.getText().trim();
+        String brand = this.txtBrand.getText().trim();
+        String model = this.txtModel.getText().trim();
+        int selectedIndex = this.cmbEngineType.getSelectedIndex();
+        return AddCarPanelValidator.areFieldsValid(licensePlate, brand, model, selectedIndex);
+    }
+    
+    private boolean carExists(){
+        String licensePlate = this.txtLicensePlate.getText().trim();
+        
+        return AddCarPanelValidator.carExists(licensePlate);
+    }
+    
+    private void saveCar(){
+        String licensePlate = this.txtLicensePlate.getText().trim();
+        String brand = this.txtBrand.getText().trim();
+        String model = this.txtModel.getText().trim();
+        EngineType engineType = (EngineType)this.cmbEngineType.getSelectedItem();
+        
+        Car car = new Car(licensePlate, brand, model, engineType);
+        CarService.create(car);
+        
+        infoMessage("Coche guardado", "Información");
+        
+        cleanFields();
+    }
+    
+    public static void infoMessage(String message, String title) {
+        String rutaImagen = "src/images/info.png";
+        ImageIcon icono = new ImageIcon(rutaImagen);
+        JOptionPane.showMessageDialog(null, message, title, JOptionPane.INFORMATION_MESSAGE, icono);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
