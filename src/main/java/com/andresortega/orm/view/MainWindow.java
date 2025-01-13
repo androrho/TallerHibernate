@@ -4,12 +4,33 @@
  */
 package com.andresortega.orm.view;
 
+import com.andresortega.orm.view.car.AddCarPanel;
+import com.andresortega.orm.view.car.CarRepairHistoryPanel;
+import com.andresortega.orm.view.car.ModifyCarPanel;
+import com.andresortega.orm.view.customer.AddCustomerPanel;
+import com.andresortega.orm.view.customer.CustomerRepairHistoryPanel;
+import com.andresortega.orm.view.customer.ModifyCustomerPanel;
+import com.andresortega.orm.view.repair.AddRepairPanel;
+import com.andresortega.orm.view.repair.DeleteRepairPanel;
+import com.andresortega.orm.view.repair.ModifyRepairPanel;
+import java.awt.Component;
+import javax.swing.JPanel;
+
 /**
  *
  * @author Andrés
  */
 public class MainWindow extends javax.swing.JFrame {
 
+    AddCarPanel addCarPanel;
+    CarRepairHistoryPanel carRepairHistoryPanel;
+    ModifyCarPanel modifyCarPanel;
+    AddCustomerPanel addCustomerPanel;
+    CustomerRepairHistoryPanel customerRepairHistoryPanel;
+    ModifyCustomerPanel modifyCustomerPanel;
+    AddRepairPanel addRepairPanel;
+    DeleteRepairPanel deleteRepairPanel;
+    ModifyRepairPanel modifyRepairPanel;
     /**
      * Creates new form MainWindow
      */
@@ -133,45 +154,18 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
     }
-    /*
+
     private void deletePanels() {
-        try {
-            remove(gerenteAlta);
-            pack();
-        } catch (java.lang.NullPointerException ex) {
+        for (Component comp : getContentPane().getComponents()) {
+            if (comp instanceof JPanel) {
+                getContentPane().remove(comp);
+                
+            }
         }
-        try {
-            remove(gerenteConsulta);
-            pack();
-        } catch (java.lang.NullPointerException ex) {
-        }
-        try {
-            remove(gerenteModificacion);
-            pack();
-        } catch (java.lang.NullPointerException ex) {
-        }
-        try {
-            remove(gerenteAperturaCuentas);
-            pack();
-        } catch (java.lang.NullPointerException ex) {
-        }
-        try {
-            remove(gerentePrestamos);
-            pack();
-        } catch (java.lang.NullPointerException ex) {
-        }
-        try {
-            remove(cajeroTransacciones);
-            pack();
-        } catch (java.lang.NullPointerException ex) {
-        }
-        try {
-            remove(cajeroPrestamos);
-            pack();
-        } catch (java.lang.NullPointerException ex) {
-        }
+        revalidate();
+        repaint();
     }
-    */
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
