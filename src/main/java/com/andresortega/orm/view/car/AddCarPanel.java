@@ -16,6 +16,7 @@ public class AddCarPanel extends javax.swing.JPanel {
     public AddCarPanel() {
         initComboBoxModel();
         initComponents();
+        cmbEngineType.setSelectedIndex(-1);
     }
 
     /**
@@ -41,6 +42,7 @@ public class AddCarPanel extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(720, 457));
 
         cmbEngineType.setModel(modelCmbEngineType);
+        cmbEngineType.setToolTipText("");
 
         jLabel1.setText("Marca");
 
@@ -117,7 +119,7 @@ public class AddCarPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCleanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCleanActionPerformed
-        // TODO add your handling code here:
+        cleanFields();
     }//GEN-LAST:event_btnCleanActionPerformed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
@@ -126,6 +128,13 @@ public class AddCarPanel extends javax.swing.JPanel {
     
     private void initComboBoxModel(){
         modelCmbEngineType = new DefaultComboBoxModel(EngineType.values());
+    }
+    
+    private void cleanFields(){
+        txtLicensePlate.setText("");
+        txtBrand.setText("");
+        txtModel.setText("");
+        cmbEngineType.setSelectedIndex(-1);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
