@@ -4,15 +4,7 @@
  */
 package com.andresortega.orm.view;
 
-import com.andresortega.orm.view.car.AddCarPanel;
-import com.andresortega.orm.view.car.CarRepairHistoryPanel;
-import com.andresortega.orm.view.car.ModifyCarPanel;
-import com.andresortega.orm.view.customer.AddCustomerPanel;
-import com.andresortega.orm.view.customer.CustomerRepairHistoryPanel;
-import com.andresortega.orm.view.customer.ModifyCustomerPanel;
 import com.andresortega.orm.view.repair.AddRepairPanel;
-import com.andresortega.orm.view.repair.DeleteRepairPanel;
-import com.andresortega.orm.view.repair.ModifyRepairPanel;
 import java.awt.Component;
 import javax.swing.JPanel;
 
