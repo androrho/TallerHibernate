@@ -3,7 +3,6 @@ package com.andresortega.orm.view.car;
 import com.andresortega.model.EngineType;
 import javax.swing.DefaultComboBoxModel;
 
-
 /**
  *
  * @author Andrés

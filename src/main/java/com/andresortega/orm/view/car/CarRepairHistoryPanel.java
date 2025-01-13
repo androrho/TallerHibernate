@@ -1,14 +1,9 @@
 package com.andresortega.orm.view.car;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
-
 
 /**
  *
- * @author dam
+ * @author Andrés
  */
 public class CarRepairHistoryPanel extends javax.swing.JPanel {
 
