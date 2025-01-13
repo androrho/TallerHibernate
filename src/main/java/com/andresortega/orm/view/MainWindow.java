@@ -4,7 +4,16 @@
  */
 package com.andresortega.orm.view;
 
+import com.andresortega.orm.view.car.AddCarPanel;
+import com.andresortega.orm.view.car.CarRepairHistoryPanel;
+import com.andresortega.orm.view.car.ModifyCarPanel;
+import com.andresortega.orm.view.customer.AddCustomerPanel;
+import com.andresortega.orm.view.customer.CustomerRepairHistoryPanel;
+import com.andresortega.orm.view.customer.ModifyCustomerPanel;
 import com.andresortega.orm.view.repair.AddRepairPanel;
+import com.andresortega.orm.view.repair.DeleteRepairPanel;
+import com.andresortega.orm.view.repair.ModifyRepairPanel;
+import java.awt.BorderLayout;
 import java.awt.Component;
 import javax.swing.JPanel;
 
@@ -31,6 +40,7 @@ public class MainWindow extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         mnuAddRepair = new javax.swing.JMenuItem();
@@ -46,6 +56,19 @@ public class MainWindow extends javax.swing.JFrame {
         mnuCarRepairHistory = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 720, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 457, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
         jMenu1.setText("Reparaciones");
 
@@ -134,17 +157,6 @@ public class MainWindow extends javax.swing.JFrame {
 
         setJMenuBar(jMenuBar1);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 720, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 457, Short.MAX_VALUE)
-        );
-
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
@@ -157,49 +169,49 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void mnuModifyRepairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuModifyRepairActionPerformed
         deletePanels();
-        panel = new AddRepairPanel();
+        panel = new ModifyRepairPanel();
         addPanel(panel);
     }//GEN-LAST:event_mnuModifyRepairActionPerformed
 
     private void mnuDeleteRepairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuDeleteRepairActionPerformed
         deletePanels();
-        panel = new AddRepairPanel();
+        panel = new DeleteRepairPanel();
         addPanel(panel);
     }//GEN-LAST:event_mnuDeleteRepairActionPerformed
 
     private void mnuAddCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuAddCustomerActionPerformed
         deletePanels();
-        panel = new AddRepairPanel();
+        panel = new AddCustomerPanel();
         addPanel(panel);
     }//GEN-LAST:event_mnuAddCustomerActionPerformed
 
     private void mnuModifyCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuModifyCustomerActionPerformed
         deletePanels();
-        panel = new AddRepairPanel();
+        panel = new ModifyCustomerPanel();
         addPanel(panel);
     }//GEN-LAST:event_mnuModifyCustomerActionPerformed
 
     private void mnuCustomerRepairHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuCustomerRepairHistoryActionPerformed
         deletePanels();
-        panel = new AddRepairPanel();
+        panel = new CustomerRepairHistoryPanel();
         addPanel(panel);
     }//GEN-LAST:event_mnuCustomerRepairHistoryActionPerformed
 
     private void mnuAddCarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuAddCarActionPerformed
         deletePanels();
-        panel = new AddRepairPanel();
+        panel = new AddCarPanel();
         addPanel(panel);
     }//GEN-LAST:event_mnuAddCarActionPerformed
 
     private void mnuModifyCarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuModifyCarActionPerformed
         deletePanels();
-        panel = new AddRepairPanel();
+        panel = new ModifyCarPanel();
         addPanel(panel);
     }//GEN-LAST:event_mnuModifyCarActionPerformed
 
     private void mnuCarRepairHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuCarRepairHistoryActionPerformed
         deletePanels();
-        panel = new AddRepairPanel();
+        panel = new CarRepairHistoryPanel();
         addPanel(panel);
     }//GEN-LAST:event_mnuCarRepairHistoryActionPerformed
 
@@ -242,6 +254,7 @@ public class MainWindow extends javax.swing.JFrame {
         add(jpanel).setVisible(true);
         revalidate();
         repaint();
+        pack();
     }
     
     private void deletePanels() {
@@ -259,6 +272,7 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JMenuItem mnuAddCar;
     private javax.swing.JMenuItem mnuAddCustomer;
     private javax.swing.JMenuItem mnuAddRepair;
