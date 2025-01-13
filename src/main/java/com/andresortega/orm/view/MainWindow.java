@@ -159,7 +159,6 @@ public class MainWindow extends javax.swing.JFrame {
         for (Component comp : getContentPane().getComponents()) {
             if (comp instanceof JPanel) {
                 getContentPane().remove(comp);
-                
             }
         }
         revalidate();
