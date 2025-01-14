@@ -3,8 +3,7 @@ package com.andresortega.orm.view.car;
 import com.andresortega.database.CarService;
 import com.andresortega.model.Car;
 import com.andresortega.model.EngineType;
-import java.util.ArrayList;
-import java.util.Arrays;
+import static com.andresortega.orm.view.car.AddCarPanel.infoMessage;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
@@ -146,8 +145,45 @@ public class ModifyCarPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnCleanActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
-        //save();
+        update();
     }//GEN-LAST:event_btnUpdateActionPerformed
+
+    private void update() {
+        if (!areFieldsValid()) {
+            return;
+        }
+        if (!isRowSelected()) {
+            return;
+        }
+        updateCar();
+    }
+
+    private void updateCar() {
+        String currentLicensePlate = getCurrentLicensePlate();
+        Car car = CarService.read(currentLicensePlate);
+
+        car.setLicensePlate(getUpdatedLicensePlate(car.getLicensePlate()));
+        car.setBrand(getUpdatedBrand(car.getBrand()));
+        car.setModel(getUpdatedModel(car.getModel()));
+        car.setEngineType(getUpdatedEngineType(car.getEngineType()));
+
+        CarService.update(car);
+
+        infoMessage("Coche actualizado", "Información");
+
+        cleanFields();
+        deleteTableModelRows();
+        initTableModelData();
+
+    }
+
+    private boolean areFieldsValid() {
+        String licensePlate = this.txtLicensePlate.getText().trim();
+        String brand = this.txtBrand.getText().trim();
+        String model = this.txtModel.getText().trim();
+        int selectedIndex = this.cmbEngineType.getSelectedIndex();
+        return ModifyCarPanelValidator.areFieldsValid(licensePlate, brand, model, selectedIndex);
+    }
 
     private void initTableModel() {
         String[] columnNames = {"Matrícula", "Marca", "Modelo", "Tipo Motor"};
@@ -160,8 +196,8 @@ public class ModifyCarPanel extends javax.swing.JPanel {
             }
         };
     }
-    
-    private void initTableModelData(){
+
+    private void initTableModelData() {
         List<Car> cars = CarService.read();
         for (int i = 0; i < cars.size(); i++) {
             Car car = cars.get(i);
@@ -177,6 +213,18 @@ public class ModifyCarPanel extends javax.swing.JPanel {
         }
     }
 
+    private boolean isRowSelected() {
+        return ModifyCarPanelValidator.isRowSelected(jTable1.getSelectedRow());
+    }
+
+    private void deleteTableModelRows() {
+        int rowCount = modelTable.getRowCount();
+
+        for (int i = rowCount - 1; i >= 0; i--) {
+            modelTable.removeRow(i);
+        }
+    }
+
     private void initComboBoxModel() {
         modelCmbEngineType = new DefaultComboBoxModel(EngineType.values());
     }
@@ -186,6 +234,50 @@ public class ModifyCarPanel extends javax.swing.JPanel {
         txtBrand.setText("");
         txtModel.setText("");
         cmbEngineType.setSelectedIndex(-1);
+    }
+
+    private String getCurrentLicensePlate() {
+        return ((String) jTable1.getValueAt(jTable1.getSelectedRow(), 0)).trim();
+    }
+
+    private String getUpdatedLicensePlate(String current) {
+        String updated = txtLicensePlate.getText().trim();
+
+        if (updated.isBlank()) {
+            return current;
+        } else {
+            return updated;
+        }
+    }
+
+    private String getUpdatedBrand(String current) {
+        String updated = txtBrand.getText().trim();
+
+        if (updated.isBlank()) {
+            return current;
+        } else {
+            return updated;
+        }
+    }
+
+    private String getUpdatedModel(String current) {
+        String updated = txtModel.getText().trim();
+
+        if (updated.isBlank()) {
+            return current;
+        } else {
+            return updated;
+        }
+    }
+
+    private EngineType getUpdatedEngineType(EngineType current) {
+        EngineType updated = (EngineType) cmbEngineType.getSelectedItem();
+
+        if (updated == null) {
+            return current;
+        } else {
+            return updated;
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
