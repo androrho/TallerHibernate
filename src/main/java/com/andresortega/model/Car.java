@@ -83,6 +83,11 @@ public class Car {
         return Objects.equals(this.licensePlate, other.licensePlate);
     }
 
+    @Override
+    public String toString() {
+        return licensePlate;
+    }
+    
     public int getCarId() {
         return carId;
     }
