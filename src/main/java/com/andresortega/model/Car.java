@@ -26,7 +26,7 @@ public class Car {
     @GeneratedValue(strategy = IDENTITY)
     private int carId;
 
-    @NaturalId
+    @NaturalId(mutable = true)
     @Basic(optional = false)
     @JavaType(StringJavaType.class)
     @Column(length = 9, nullable = false, unique = true)

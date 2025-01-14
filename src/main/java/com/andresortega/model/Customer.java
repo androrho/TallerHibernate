@@ -25,7 +25,7 @@ public class Customer {
     @GeneratedValue(strategy = IDENTITY)
     private int customerId;
 
-    @NaturalId
+    @NaturalId(mutable = true)
     @Basic(optional = false)
     @Column(length = 9, nullable = false, unique = true)
     private String dni;
