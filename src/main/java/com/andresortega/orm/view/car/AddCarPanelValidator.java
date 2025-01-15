@@ -87,12 +87,6 @@ public class AddCarPanelValidator {
         return true;
     }
 
-    public static void errorMessage(String message, String title) {
-        String rutaImagen = "src/images/advertencia.png";
-        ImageIcon icono = new ImageIcon(rutaImagen);
-        JOptionPane.showMessageDialog(null, message, title, JOptionPane.WARNING_MESSAGE, icono);
-    }
-
     public static boolean carExists(String str) {
         String licensePlate = str.trim();
         Car car = CarService.read(licensePlate);
@@ -103,5 +97,11 @@ public class AddCarPanelValidator {
         } else {
             return false;
         }
+    }
+    
+    public static void errorMessage(String message, String title) {
+        String rutaImagen = "src/images/advertencia.png";
+        ImageIcon icono = new ImageIcon(rutaImagen);
+        JOptionPane.showMessageDialog(null, message, title, JOptionPane.WARNING_MESSAGE, icono);
     }
 }
