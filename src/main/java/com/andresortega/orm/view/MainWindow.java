@@ -4,7 +4,6 @@ import com.andresortega.orm.view.car.AddCarPanel;
 import com.andresortega.orm.view.car.CarRepairHistoryPanel;
 import com.andresortega.orm.view.car.ModifyCarPanel;
 import com.andresortega.orm.view.customer.AddCustomerPanel;
-import com.andresortega.orm.view.customer.CustomerRepairHistoryPanel;
 import com.andresortega.orm.view.customer.ModifyCustomerPanel;
 import com.andresortega.orm.view.repair.AddRepairPanel;
 import com.andresortega.orm.view.repair.DeleteRepairPanel;
@@ -44,7 +43,6 @@ public class MainWindow extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         mnuAddCustomer = new javax.swing.JMenuItem();
         mnuModifyCustomer = new javax.swing.JMenuItem();
-        mnuCustomerRepairHistory = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         mnuAddCar = new javax.swing.JMenuItem();
         mnuModifyCar = new javax.swing.JMenuItem();
@@ -110,14 +108,6 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
         jMenu2.add(mnuModifyCustomer);
-
-        mnuCustomerRepairHistory.setText("Histórico Reparaciones");
-        mnuCustomerRepairHistory.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mnuCustomerRepairHistoryActionPerformed(evt);
-            }
-        });
-        jMenu2.add(mnuCustomerRepairHistory);
 
         jMenuBar1.add(jMenu2);
 
@@ -185,12 +175,6 @@ public class MainWindow extends javax.swing.JFrame {
         panel = new ModifyCustomerPanel();
         addPanel(panel);
     }//GEN-LAST:event_mnuModifyCustomerActionPerformed
-
-    private void mnuCustomerRepairHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuCustomerRepairHistoryActionPerformed
-        deletePanels();
-        panel = new CustomerRepairHistoryPanel();
-        addPanel(panel);
-    }//GEN-LAST:event_mnuCustomerRepairHistoryActionPerformed
 
     private void mnuAddCarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuAddCarActionPerformed
         deletePanels();
@@ -272,7 +256,6 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JMenuItem mnuAddCustomer;
     private javax.swing.JMenuItem mnuAddRepair;
     private javax.swing.JMenuItem mnuCarRepairHistory;
-    private javax.swing.JMenuItem mnuCustomerRepairHistory;
     private javax.swing.JMenuItem mnuDeleteRepair;
     private javax.swing.JMenuItem mnuModifyCar;
     private javax.swing.JMenuItem mnuModifyCustomer;
