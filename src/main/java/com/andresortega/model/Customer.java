@@ -75,6 +75,11 @@ public class Customer {
         return Objects.equals(this.dni, other.dni);
     }
 
+    @Override
+    public String toString() {
+        return "Customer{" + "dni=" + dni + '}';
+    }
+
     public int getCustomerId() {
         return customerId;
     }
