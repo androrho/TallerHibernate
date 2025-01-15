@@ -77,7 +77,7 @@ public class Customer {
 
     @Override
     public String toString() {
-        return "Customer{" + "dni=" + dni + '}';
+        return dni;
     }
 
     public int getCustomerId() {
