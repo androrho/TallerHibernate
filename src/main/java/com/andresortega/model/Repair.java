@@ -5,7 +5,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
-import static jakarta.persistence.FetchType.LAZY;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.ForeignKey;
 import jakarta.persistence.GeneratedValue;
 import static jakarta.persistence.GenerationType.IDENTITY;
@@ -31,12 +31,12 @@ public class Repair {
     @GeneratedValue(strategy = IDENTITY)
     private int repairId;
 
-    @ManyToOne(fetch = LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "carId", referencedColumnName = "carId",
             foreignKey = @ForeignKey(name = "fk_car"))
     private Car car;
 
-    @ManyToOne(fetch = LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "customerId", referencedColumnName = "customerId",
             foreignKey = @ForeignKey(name = "fk_customer"))
     private Customer customer;
