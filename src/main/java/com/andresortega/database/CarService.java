@@ -1,7 +1,6 @@
 package com.andresortega.database;
 
 import com.andresortega.model.Car;
-import com.andresortega.model.Repair;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.NoResultException;
