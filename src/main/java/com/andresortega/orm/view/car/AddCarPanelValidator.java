@@ -66,7 +66,7 @@ public class AddCarPanelValidator {
         String text = str.trim();
 
         if (text.isBlank()) {
-            errorMessage("Selecciona un modelo.", "Error");
+            errorMessage("Introduce un modelo.", "Error");
             return false;
         }
         if (text.length() > MODEL_LENGTH) {
