@@ -2,6 +2,9 @@ package com.andresortega.orm.view.customer;
 
 import com.andresortega.database.CustomerService;
 import com.andresortega.model.Customer;
+import com.andresortega.model.Repair;
+import static com.andresortega.orm.view.car.AddCarPanel.infoMessage;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
@@ -10,7 +13,9 @@ import javax.swing.table.DefaultTableModel;
  * @author Andrés
  */
 public class ModifyCustomerPanel extends javax.swing.JPanel {
+    
     DefaultTableModel modelTable;
+    
     /**
      * Creates new form mnuModifyCustomer
      */
@@ -147,14 +152,100 @@ public class ModifyCustomerPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
-        
+        update();
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnCleanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCleanActionPerformed
-        
+        cleanFields();
     }//GEN-LAST:event_btnCleanActionPerformed
+    
+    private void update() {
+        if (!areFieldsValid()) {
+            return;
+        }
+        if (!isRowSelected()) {
+            return;
+        }
+        updateCar();
+    }
+    
+    private boolean areFieldsValid() {
+        String dni = this.txtDni.getText().trim();
+        String name = this.txtName.getText().trim();
+        String age = this.txtAge.getText().trim();
+        return ModifyCustomerPanelValidator.areFieldsValid(dni, name, age);
+    }
+    
+    private boolean isRowSelected() {
+        return ModifyCustomerPanelValidator.isRowSelected(jTable1.getSelectedRow());
+    }
+    
+    private void updateCar() {
+        String currentDni = getCurrentDni();
+        Customer customer = CustomerService.read(currentDni);
+        ArrayList<Repair> a = new ArrayList<>();
+        a.indexOf(a);
+        customer.setDni(getUpdatedDni(customer.getDni()));
+        customer.setName(getUpdatedName(customer.getName()));
+        customer.setAge(getUpdatedAge(customer.getAge()));
 
+        CustomerService.update(customer);
 
+        infoMessage("Cliente actualizado", "Información");
+
+        cleanFields();
+        deleteTableModelRows();
+        initTableModelData();
+    }
+    
+    private String getCurrentDni() {
+        return ((String) jTable1.getValueAt(jTable1.getSelectedRow(), 0)).trim();
+    }
+    
+    private String getUpdatedDni(String current) {
+        String updated = txtDni.getText().trim();
+
+        if (updated.isBlank()) {
+            return current;
+        } else {
+            return updated;
+        }
+    }
+
+    private String getUpdatedName(String current) {
+        String updated = txtName.getText().trim();
+
+        if (updated.isBlank()) {
+            return current;
+        } else {
+            return updated;
+        }
+    }
+
+    private int getUpdatedAge(int current) {
+        String updated = txtAge.getText().trim();
+
+        if (updated.isBlank()) {
+            return current;
+        } else {
+            return Integer.parseInt(updated);
+        }
+    }
+    
+    private void cleanFields() {
+        txtDni.setText("");
+        txtName.setText("");
+        txtAge.setText("");
+    }
+    
+    private void deleteTableModelRows() {
+        int rowCount = modelTable.getRowCount();
+
+        for (int i = rowCount - 1; i >= 0; i--) {
+            modelTable.removeRow(i);
+        }
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClean;
     private javax.swing.JButton btnUpdate;
