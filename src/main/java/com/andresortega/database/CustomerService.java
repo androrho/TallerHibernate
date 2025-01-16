@@ -1,9 +1,12 @@
 package com.andresortega.database;
 
+import com.andresortega.model.Car;
 import com.andresortega.model.Customer;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.NoResultException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -35,7 +38,29 @@ public class CustomerService {
         tx.commit();
         em.close();
     }
+    
+    public static List<Customer> read() {
+        EntityManager em = PersistenceUtil.getEntityManagerFactory().createEntityManager();
+        EntityTransaction tx = em.getTransaction();
+        List<Customer> list = new ArrayList();
 
+        try {
+            tx.begin();
+            String hql = "SELECT c FROM Customer c";
+            list = em.createQuery(hql, Customer.class)
+                    .getResultList();
+            tx.commit();
+        } catch (NoResultException e) {
+            System.out.println("No se encontró ningún coche.");
+            tx.rollback();
+        } catch (Exception e) {
+            tx.rollback();
+        } finally {
+            em.close();
+        }
+        return list;
+    }
+    
     public static Customer read(String dni) {
         EntityManager em = PersistenceUtil.getEntityManagerFactory().createEntityManager();
         EntityTransaction tx = em.getTransaction();
