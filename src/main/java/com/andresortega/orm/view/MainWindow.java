@@ -1,5 +1,6 @@
 package com.andresortega.orm.view;
 
+import com.andresortega.cosas.Actions;
 import com.andresortega.orm.view.car.AddCarPanel;
 import com.andresortega.orm.view.car.CarRepairHistoryPanel;
 import com.andresortega.orm.view.car.ModifyCarPanel;
@@ -10,6 +11,9 @@ import com.andresortega.orm.view.repair.DeleteRepairPanel;
 import com.andresortega.orm.view.repair.ModifyRepairPanel;
 import java.awt.Component;
 import javax.swing.JPanel;
+import javax.swing.UIManager;
+import javax.swing.UIManager.LookAndFeelInfo;
+import javax.swing.UnsupportedLookAndFeelException;
 
 /**
  *
@@ -221,12 +225,26 @@ public class MainWindow extends javax.swing.JFrame {
         }
         //</editor-fold>
 
+        try {
+            for (LookAndFeelInfo info:UIManager.getInstalledLookAndFeels()) {
+                System.out.println(info.getName());
+                System.out.println(info.getClassName());
+                if ("Windows".equals(info.getName())) {
+                    UIManager.setLookAndFeel(info.getClassName());
+                } else if ("GTK+".equals(info.getName()))
+                    UIManager.setLookAndFeel(info.getClassName());
+            }
+        } catch(ClassNotFoundException | IllegalAccessException | InstantiationException | UnsupportedLookAndFeelException ex){
+            
+        }
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new MainWindow().setVisible(true);
             }
         });
+        Actions.insertBD();
     }
     
     private void addPanel(JPanel jpanel){
