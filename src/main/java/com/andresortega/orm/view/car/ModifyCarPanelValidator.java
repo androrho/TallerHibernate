@@ -2,9 +2,6 @@ package com.andresortega.orm.view.car;
 
 import com.andresortega.database.CarService;
 import com.andresortega.model.Car;
-import static com.andresortega.orm.view.car.AddCarPanelValidator.BRAND_LENGTH;
-import static com.andresortega.orm.view.car.AddCarPanelValidator.LICENSE_PLATE_LENGTH;
-import static com.andresortega.orm.view.car.AddCarPanelValidator.MODEL_LENGTH;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
@@ -13,6 +10,11 @@ import javax.swing.JOptionPane;
  * @author Andrés
  */
 public class ModifyCarPanelValidator {
+    
+    final static int LICENSE_PLATE_LENGTH = 9;
+    final static int BRAND_LENGTH = 45;
+    final static int MODEL_LENGTH = 45;
+    
     static boolean areFieldsValid(String licensePlate, String brand, String model, int selectedIndex) {
         if (!isLicensePlateValid(licensePlate)) {
             return false;
