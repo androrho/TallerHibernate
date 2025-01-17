@@ -25,12 +25,12 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnuModifyRepairActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="mnuDeleteRepair">
+            <MenuItem class="javax.swing.JMenuItem" name="mnuManageRepair">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Eliminar Reparaciones"/>
+                <Property name="text" type="java.lang.String" value="Gestionar Reparaciones"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnuDeleteRepairActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnuManageRepairActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>

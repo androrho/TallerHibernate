@@ -1,15 +1,19 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
+ */
 package com.andresortega.orm.view.repair;
 
 /**
  *
  * @author Andrés
  */
-public class DeleteRepairPanel extends javax.swing.JPanel {
+public class ManageRepairPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form mnuDeleteRepair
+     * Creates new form ManageRepairPanle
      */
-    public DeleteRepairPanel() {
+    public ManageRepairPanel() {
         initComponents();
     }
 
@@ -22,8 +26,6 @@ public class DeleteRepairPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setPreferredSize(new java.awt.Dimension(720, 457));
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -32,7 +34,7 @@ public class DeleteRepairPanel extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 480, Short.MAX_VALUE)
+            .addGap(0, 457, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
