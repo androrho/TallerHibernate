@@ -1,16 +1,43 @@
 package com.andresortega.orm.view.repair;
 
+import com.andresortega.controller.CarService;
+import com.andresortega.controller.CustomerService;
+import com.andresortega.controller.RepairService;
+import com.andresortega.model.Car;
+import com.andresortega.model.Customer;
+import com.andresortega.model.Repair;
+import static com.andresortega.orm.view.car.AddCarPanel.infoMessage;
+import java.util.List;
+import javax.swing.DefaultComboBoxModel;
+
 /**
  *
  * @author Andrés
  */
 public class AddRepairPanel extends javax.swing.JPanel {
 
+    private DefaultComboBoxModel modelCmbCustomers;
+    private DefaultComboBoxModel modelCmbCars;
+
     /**
      * Creates new form mnuAddRepair
      */
     public AddRepairPanel() {
+        initComboBoxModel();
         initComponents();
+        initComboBoxData();
+    }
+
+    private void initComboBoxModel() {
+        modelCmbCustomers = new DefaultComboBoxModel();
+        modelCmbCars = new DefaultComboBoxModel();
+    }
+
+    private void initComboBoxData() {
+        List<Customer> customers = CustomerService.read();
+        List<Car> cars = CarService.read();
+        modelCmbCustomers.addAll(customers);
+        modelCmbCars.addAll(cars);
     }
 
     /**
@@ -22,21 +49,170 @@ public class AddRepairPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        btnSave = new javax.swing.JButton();
+        btnClean = new javax.swing.JButton();
+        txtPrice = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        txtDescription = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        cmbCars = new javax.swing.JComboBox<>();
+        cmbCustomers = new javax.swing.JComboBox<>();
+
         setPreferredSize(new java.awt.Dimension(720, 457));
+
+        jLabel2.setText("Matrícula");
+
+        jLabel3.setText("Precio");
+
+        btnSave.setText("Guardar");
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveActionPerformed(evt);
+            }
+        });
+
+        btnClean.setText("Limpiar Campos");
+        btnClean.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCleanActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("DNI");
+
+        jLabel4.setText("Descripción");
+
+        cmbCars.setModel(modelCmbCars);
+
+        cmbCustomers.setModel(modelCmbCustomers);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 720, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(228, 228, 228)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtDescription, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addComponent(btnClean)
+                            .addGap(18, 18, 18)
+                            .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel3)
+                                .addComponent(jLabel1)
+                                .addComponent(jLabel2))
+                            .addGap(78, 78, 78)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(txtPrice, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+                                .addComponent(cmbCars, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(cmbCustomers, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                .addContainerGap(234, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 480, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(145, 145, 145)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(cmbCars, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cmbCustomers, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtDescription, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addGap(24, 24, 24)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSave)
+                    .addComponent(btnClean))
+                .addContainerGap(159, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+        save();
+    }//GEN-LAST:event_btnSaveActionPerformed
+
+    private void btnCleanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCleanActionPerformed
+        cleanFields();
+    }//GEN-LAST:event_btnCleanActionPerformed
+
+    private void save() {
+        if (!areFieldsValid()) {
+            return;
+        }
+        if (isInsertRestricted()) {
+            return;
+        }
+
+        saveRepair();
+    }
+
+    private boolean areFieldsValid() {
+        Car selectedCar = (Car) cmbCars.getSelectedItem();
+        Customer selectedCustomer = (Customer) cmbCustomers.getSelectedItem();
+        String price = this.txtPrice.getText().trim();
+        String description = txtDescription.getText().trim();
+
+        return AddRepairPanelValidator.areFieldsValid(selectedCar, selectedCustomer, price, description);
+    }
+
+    private boolean isInsertRestricted() {
+        Car car = (Car) cmbCars.getSelectedItem();
+        Customer customer = (Customer) cmbCustomers.getSelectedItem();
+        float price = Float.parseFloat(txtPrice.getText());
+        String description = txtDescription.getText();
+
+        Repair r = new Repair(car, customer, price, description);
+
+        return AddRepairPanelValidator.isInsertRestricted(r);
+    }
+
+    private void saveRepair() {
+        Car car = (Car) cmbCars.getSelectedItem();
+        Customer customer = (Customer) cmbCustomers.getSelectedItem();
+        float price = Float.parseFloat(txtPrice.getText());
+        String description = txtDescription.getText();
+
+        Repair r = new Repair(car, customer, price, description);
+        RepairService.create(r);
+
+        infoMessage("Reparación guardada", "Información");
+
+        cleanFields();
+    }
+
+    private void cleanFields() {
+        cmbCars.setSelectedIndex(-1);
+        cmbCustomers.setSelectedIndex(-1);
+        txtPrice.setText("");
+        txtDescription.setText("");
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnClean;
+    private javax.swing.JButton btnSave;
+    private javax.swing.JComboBox<String> cmbCars;
+    private javax.swing.JComboBox<String> cmbCustomers;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JTextField txtDescription;
+    private javax.swing.JTextField txtPrice;
     // End of variables declaration//GEN-END:variables
 }
