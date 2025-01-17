@@ -1,6 +1,6 @@
 package com.andresortega.orm.view.car;
 
-import com.andresortega.database.CarService;
+import com.andresortega.controller.CarService;
 import com.andresortega.model.Car;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;

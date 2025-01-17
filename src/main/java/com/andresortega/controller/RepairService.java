@@ -1,4 +1,4 @@
-package com.andresortega.database;
+package com.andresortega.controller;
 
 import com.andresortega.model.Car;
 import com.andresortega.model.Customer;

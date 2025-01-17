@@ -1,7 +1,7 @@
 package com.andresortega.orm.view.car;
 
-import com.andresortega.database.CarService;
-import com.andresortega.database.RepairService;
+import com.andresortega.controller.CarService;
+import com.andresortega.controller.RepairService;
 import com.andresortega.model.Car;
 import com.andresortega.model.Repair;
 import java.util.List;

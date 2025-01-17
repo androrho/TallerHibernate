@@ -1,7 +1,6 @@
-package com.andresortega.database;
+package com.andresortega.controller;
 
 import com.andresortega.model.Car;
-import com.andresortega.model.Customer;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.NoResultException;
@@ -12,25 +11,33 @@ import java.util.List;
  *
  * @author Andrés
  */
-public class CustomerService {
+public class CarService {
 
-    public static String getName(String dni) {
-        Customer customer = CustomerService.read(dni);
-        if (customer != null) {
-            return "[\n   {\n      \"dni\":" + dni + ",\n      \"type\":\"customer\",\n      \"name\": \"" + customer.getName() + "\",\n      \"query\":\"success\"\n   }\n]";
+    public static String getBrand(String licensePlate) {
+        Car car = CarService.read(licensePlate);
+        if (car != null) {
+            return "[\n   {\n      \"licensePlate\":" + licensePlate + ",\n      \"type\":\"car\",\n      \"brand\": \"" + car.getBrand() + "\",\n      \"query\":\"success\"\n   }\n]";
         }
-        return "[\n   {\n      \"dni\":" + dni + ",\n      \"type\":\"customer\",\n      \"query\":\"failed\"\n   }\n]";
+        return "[\n   {\n      \"licensePlate\":" + licensePlate + ",\n      \"type\":\"car\",\n      \"query\":\"failed\"\n   }\n]";
     }
 
-    public static String getAge(String dni) {
-        Customer customer = CustomerService.read(dni);
-        if (customer != null) {
-            return "[\n   {\n      \"dni\":" + dni + ",\n      \"type\":\"customer\",\n      \"age\": \"" + customer.getAge() + "\",\n      \"query\":\"success\"\n   }\n]";
+    public static String getModel(String licensePlate) {
+        Car car = CarService.read(licensePlate);
+        if (car != null) {
+            return "[\n   {\n      \"licensePlate\":" + licensePlate + ",\n      \"type\":\"car\",\n      \"model\": \"" + car.getModel() + "\",\n      \"query\":\"success\"\n   }\n]";
         }
-        return "[\n   {\n      \"dni\":" + dni + ",\n      \"type\":\"customer\",\n      \"query\":\"failed\"\n   }\n]";
+        return "[\n   {\n      \"licensePlate\":" + licensePlate + ",\n      \"type\":\"car\",\n      \"query\":\"failed\"\n   }\n]";
     }
 
-    public static void create(Customer object) {
+    public static String getEngineType(String licensePlate) {
+        Car car = CarService.read(licensePlate);
+        if (car != null) {
+            return "[\n   {\n      \"licensePlate\":" + licensePlate + ",\n      \"type\":\"car\",\n      \"engineType\": \"" + car.getEngineType() + "\",\n      \"query\":\"success\"\n   }\n]";
+        }
+        return "[\n   {\n      \"licensePlate\":" + licensePlate + ",\n      \"type\":\"car\",\n      \"query\":\"failed\"\n   }\n]";
+    }
+
+    public static void create(Car object) {
         EntityManager em = PersistenceUtil.getEntityManagerFactory().createEntityManager();
         EntityTransaction tx = em.getTransaction();
         tx.begin();
@@ -39,15 +46,15 @@ public class CustomerService {
         em.close();
     }
     
-    public static List<Customer> read() {
+    public static List<Car> read() {
         EntityManager em = PersistenceUtil.getEntityManagerFactory().createEntityManager();
         EntityTransaction tx = em.getTransaction();
-        List<Customer> list = new ArrayList();
+        List<Car> list = new ArrayList();
 
         try {
             tx.begin();
-            String hql = "SELECT c FROM Customer c";
-            list = em.createQuery(hql, Customer.class)
+            String hql = "SELECT c FROM Car c";
+            list = em.createQuery(hql, Car.class)
                     .getResultList();
             tx.commit();
         } catch (NoResultException e) {
@@ -60,41 +67,41 @@ public class CustomerService {
         }
         return list;
     }
-    
-    public static Customer read(String dni) {
+
+    public static Car read(String licensePlate) {
         EntityManager em = PersistenceUtil.getEntityManagerFactory().createEntityManager();
         EntityTransaction tx = em.getTransaction();
-        Customer customer = null;
-        
+        Car car = null;
+
         try {
             tx.begin();
-            String hql = "SELECT c FROM Customer c WHERE c.dni = :dni";
-            customer = em.createQuery(hql, Customer.class)
-                    .setParameter("dni", dni)
+            String hql = "SELECT c FROM Car c WHERE c.licensePlate = :licensePlate";
+            car = em.createQuery(hql, Car.class)
+                    .setParameter("licensePlate", licensePlate)
                     .getSingleResult();
             tx.commit();
         } catch (NoResultException e) {
-            System.out.println("No se encontró ningún cliente con el dni: " + dni);
+            System.out.println("No se encontró ningún coche con la matrícula: " + licensePlate);
             tx.rollback();
         } catch (Exception e) {
             tx.rollback();
         } finally {
             em.close();
         }
-        return customer;
+        return car;
     }
 
-    public static Customer read(Customer object) {
+    public static Car read(Car object) {
         EntityManager em = PersistenceUtil.getEntityManagerFactory().createEntityManager();
         EntityTransaction tx = em.getTransaction();
         tx.begin();
-        Customer objectResult = em.find(Customer.class, object.getCustomerId());
+        Car objectResult = em.find(Car.class, object.getCarId());
         tx.commit();
         em.close();
         return objectResult;
     }
 
-    public static void update(Customer object) {
+    public static void update(Car object) {
         EntityManager em = PersistenceUtil.getEntityManagerFactory().createEntityManager();
         EntityTransaction tx = em.getTransaction();
         tx.begin();
@@ -103,33 +110,32 @@ public class CustomerService {
         em.close();
     }
 
-    public static boolean delete(String dni) {
+    public static boolean delete(String licensePlate) {
         EntityManager em = PersistenceUtil.getEntityManagerFactory().createEntityManager();
         EntityTransaction tx = em.getTransaction();
         boolean deleted = false;
-        
+
         try {
             tx.begin();
-        String hql = "DELETE FROM Customer c WHERE c.dni = :dni";
-        int rowsAffected = em.createQuery(hql)
-                .setParameter("dni", dni)
-                .executeUpdate();
-        tx.commit();
-        deleted = rowsAffected > 0;
+            String hql = "DELETE FROM Car c WHERE c.licensePlate = :licensePlate";
+            int rowsAffected = em.createQuery(hql)
+                    .setParameter("licensePlate", licensePlate)
+                    .executeUpdate();
+            tx.commit();
+            deleted = rowsAffected > 0;
         } catch (Exception e) {
             tx.rollback();
         } finally {
             em.close();
         }
-        
         return deleted;
     }
 
-    public static void delete(Customer object) {
+    public static void delete(Car object) {
         EntityManager em = PersistenceUtil.getEntityManagerFactory().createEntityManager();
         EntityTransaction tx = em.getTransaction();
         tx.begin();
-        em.remove(em.find(Object.class, object.getDni()));
+        em.remove(em.find(Object.class, object.getCarId()));
         tx.commit();
         em.close();
     }

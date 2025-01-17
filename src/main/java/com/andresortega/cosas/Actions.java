@@ -1,8 +1,8 @@
 package com.andresortega.cosas;
 
-import com.andresortega.database.CarService;
-import com.andresortega.database.CustomerService;
-import com.andresortega.database.RepairService;
+import com.andresortega.controller.CarService;
+import com.andresortega.controller.CustomerService;
+import com.andresortega.controller.RepairService;
 import com.andresortega.model.Car;
 import com.andresortega.model.Customer;
 import com.andresortega.model.EngineType;

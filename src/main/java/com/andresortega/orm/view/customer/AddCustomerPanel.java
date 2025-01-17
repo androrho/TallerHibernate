@@ -1,6 +1,6 @@
 package com.andresortega.orm.view.customer;
 
-import com.andresortega.database.CustomerService;
+import com.andresortega.controller.CustomerService;
 import com.andresortega.model.Customer;
 import com.andresortega.orm.view.car.AddCarPanelValidator;
 import javax.swing.ImageIcon;

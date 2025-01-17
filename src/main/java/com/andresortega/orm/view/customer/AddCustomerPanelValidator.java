@@ -1,6 +1,6 @@
 package com.andresortega.orm.view.customer;
 
-import com.andresortega.database.CustomerService;
+import com.andresortega.controller.CustomerService;
 import com.andresortega.model.Customer;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
