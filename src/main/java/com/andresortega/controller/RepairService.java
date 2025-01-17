@@ -203,5 +203,62 @@ public class RepairService {
         }
         return list;
     }
-
+    
+    public static boolean carHasToBePickedUp(Repair r){
+        EntityManager em = PersistenceUtil.getEntityManagerFactory().createEntityManager();
+        EntityTransaction tx = em.getTransaction();
+        Integer count = null;
+        
+        try {
+            tx.begin();
+            String sql = "SELECT COUNT(*) FROM Repairs WHERE carId = :carId and customerId = :customerId AND repairState = 3";
+            count = (Integer) em.createNativeQuery(sql, Integer.class)
+                    .setParameter("carId", r.getCar().getCarId())
+                    .setParameter("customerId", r.getCustomer().getCustomerId())
+                    .getSingleResult();
+            tx.commit();
+        } catch (NoResultException e) {
+            tx.rollback();
+        } catch (Exception e) {
+            tx.rollback();
+        } finally {
+            em.close();
+        }
+        
+        if (count >= 1){
+            System.out.println("Tienes coche(s) para recoger, recógelos primero antes de reparar otro.");
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+    public static boolean carIsInGarage(Repair r){
+        EntityManager em = PersistenceUtil.getEntityManagerFactory().createEntityManager();
+        EntityTransaction tx = em.getTransaction();
+        Integer count = null;
+        
+        try {
+            tx.begin();
+            String sql = "SELECT COUNT(*) FROM Repairs WHERE carId = :carId and customerId != :customerId AND repairState != 4";
+            count = (Integer) em.createNativeQuery(sql, Integer.class)
+                    .setParameter("carId", r.getCar().getCarId())
+                    .setParameter("customerId", r.getCustomer().getCustomerId())
+                    .getSingleResult();
+            tx.commit();
+        } catch (NoResultException e) {
+            tx.rollback();
+        } catch (Exception e) {
+            tx.rollback();
+        } finally {
+            em.close();
+        }
+        
+        if (count >= 1){
+            System.out.println("El coche está en el taller por reparaciones de otro cliente.");
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
