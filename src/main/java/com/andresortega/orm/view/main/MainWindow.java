@@ -1,6 +1,5 @@
 package com.andresortega.orm.view.main;
 
-import com.andresortega.cosas.Actions;
 import com.andresortega.orm.view.car.AddCarPanel;
 import com.andresortega.orm.view.car.CarRepairHistoryPanel;
 import com.andresortega.orm.view.car.ModifyCarPanel;
@@ -244,7 +243,6 @@ public class MainWindow extends javax.swing.JFrame {
                 new MainWindow().setVisible(true);
             }
         });
-        Actions.insertBD();
     }
     
     private void addPanel(JPanel jpanel){
