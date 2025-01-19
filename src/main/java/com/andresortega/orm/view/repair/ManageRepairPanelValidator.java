@@ -14,7 +14,7 @@ import static com.andresortega.orm.view.util.Dialog.warningMessage;
  */
 public class ManageRepairPanelValidator {
     
-    public static boolean areFieldsValid(int selectedIndex){
+    protected static boolean areFieldsValid(int selectedIndex){
         
         if (!isEngineTypeValid(selectedIndex)) {
             return false;
@@ -23,7 +23,7 @@ public class ManageRepairPanelValidator {
         return true;
     }
     
-    public static boolean isEngineTypeValid(int selectedIndex) {
+    private static boolean isEngineTypeValid(int selectedIndex) {
 
         if (selectedIndex == -1) {
             warningMessage("Selecciona un estado de reparación.", "Advertencia");
@@ -33,7 +33,7 @@ public class ManageRepairPanelValidator {
         return true;
     }
     
-    public static boolean isRowSelected(int selectedRow) {
+    protected static boolean isRowSelected(int selectedRow) {
         
         if (selectedRow == -1) {
             warningMessage("Selecciona una fila en la tabla.", "Advertencia");
@@ -43,7 +43,7 @@ public class ManageRepairPanelValidator {
         }
     }
     
-    public static boolean isUpdateRestricted(Repair r){
+    protected static boolean isUpdateRestricted(Repair r){
         
         if (repairIsPickedUp(r)) {
             errorMessage("El coche ya no está en el taller.", "Error");
