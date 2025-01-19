@@ -15,7 +15,7 @@ import javax.swing.table.DefaultTableModel;
 public class ModifyCarPanel extends javax.swing.JPanel {
 
     private DefaultComboBoxModel modelCmbEngineType;
-    DefaultTableModel modelTable;
+    private DefaultTableModel modelTable;
 
     /**
      * Creates new form mnuModifyCar
