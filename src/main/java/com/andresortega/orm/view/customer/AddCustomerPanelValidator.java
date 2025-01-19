@@ -15,7 +15,7 @@ public class AddCustomerPanelValidator {
     private final static int NAME_LENGTH = 45;
     private final static int AGE_LENGTH = 10;
 
-    static boolean areFieldsValid(String dni, String name, String age) {
+    protected static boolean areFieldsValid(String dni, String name, String age) {
         if (!isDniValid(dni)) {
             return false;
         }
@@ -29,7 +29,7 @@ public class AddCustomerPanelValidator {
         return true;
     }
 
-    public static boolean isDniValid(String str) {
+    private static boolean isDniValid(String str) {
         String text = str.trim();
 
         if (text.isBlank()) {
@@ -44,7 +44,7 @@ public class AddCustomerPanelValidator {
         return true;
     }
 
-    public static boolean isNameValid(String str) {
+    private static boolean isNameValid(String str) {
         String text = str.trim();
 
         if (text.isBlank()) {
@@ -59,7 +59,7 @@ public class AddCustomerPanelValidator {
         return true;
     }
 
-    public static boolean isAgeValid(String str) {
+    private static boolean isAgeValid(String str) {
         String text = str.trim();
 
         if (text.isBlank()) {
@@ -85,7 +85,7 @@ public class AddCustomerPanelValidator {
         }
     }
 
-    public static boolean customerExists(String str) {
+    protected static boolean customerExists(String str) {
         String dni = str.trim();
         Customer customer = CustomerService.read(dni);
 
