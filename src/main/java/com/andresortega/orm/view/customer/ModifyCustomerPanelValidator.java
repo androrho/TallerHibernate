@@ -8,9 +8,9 @@ import static com.andresortega.orm.view.util.Dialog.warningMessage;
  */
 public class ModifyCustomerPanelValidator {
 
-    final static int DNI_LENGTH = 9;
-    final static int NAME_LENGTH = 45;
-    final static int AGE_LENGTH = 10;
+    private final static int DNI_LENGTH = 9;
+    private final static int NAME_LENGTH = 45;
+    private final static int AGE_LENGTH = 10;
 
     static boolean areFieldsValid(String dni, String name, String age) {
         if (!isDniValid(dni)) {
