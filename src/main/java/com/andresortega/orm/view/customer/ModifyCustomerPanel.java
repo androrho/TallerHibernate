@@ -167,6 +167,9 @@ public class ModifyCustomerPanel extends javax.swing.JPanel {
             return;
         }
         updateCar();
+        infoMessage("Cliente actualizado", "Información");
+        updateTable();
+        cleanFields();
     }
     
     private boolean areFieldsValid() {
@@ -190,12 +193,6 @@ public class ModifyCustomerPanel extends javax.swing.JPanel {
         customer.setAge(getUpdatedAge(customer.getAge()));
 
         CustomerService.update(customer);
-
-        infoMessage("Cliente actualizado", "Información");
-
-        cleanFields();
-        deleteTableModelRows();
-        initTableModelData();
     }
     
     private String getCurrentDni() {
@@ -232,10 +229,9 @@ public class ModifyCustomerPanel extends javax.swing.JPanel {
         }
     }
     
-    private void cleanFields() {
-        txtDni.setText("");
-        txtName.setText("");
-        txtAge.setText("");
+    private void updateTable(){
+        deleteTableModelRows();
+        initTableModelData();
     }
     
     private void deleteTableModelRows() {
@@ -244,6 +240,12 @@ public class ModifyCustomerPanel extends javax.swing.JPanel {
         for (int i = rowCount - 1; i >= 0; i--) {
             modelTable.removeRow(i);
         }
+    }
+    
+    private void cleanFields() {
+        txtDni.setText("");
+        txtName.setText("");
+        txtAge.setText("");
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
