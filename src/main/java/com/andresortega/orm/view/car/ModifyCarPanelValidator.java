@@ -15,7 +15,7 @@ public class ModifyCarPanelValidator {
     private final static int BRAND_LENGTH = 45;
     private final static int MODEL_LENGTH = 45;
     
-    static boolean areFieldsValid(String licensePlate, String brand, String model, int selectedIndex) {
+    protected static boolean areFieldsValid(String licensePlate, String brand, String model, int selectedIndex) {
         if (!isLicensePlateValid(licensePlate)) {
             return false;
         }
@@ -32,7 +32,7 @@ public class ModifyCarPanelValidator {
         return true;
     }
     
-    public static boolean isLicensePlateValid(String str) {
+    private static boolean isLicensePlateValid(String str) {
         String text = str.trim();
 
         if (text.length() > LICENSE_PLATE_LENGTH) {
@@ -43,7 +43,7 @@ public class ModifyCarPanelValidator {
         return true;
     }
 
-    public static boolean isBrandValid(String str) {
+    private static boolean isBrandValid(String str) {
         String text = str.trim();
         
         if (text.length() > BRAND_LENGTH) {
@@ -54,7 +54,7 @@ public class ModifyCarPanelValidator {
         return true;
     }
 
-    public static boolean isModelValid(String str) {
+    private static boolean isModelValid(String str) {
         String text = str.trim();
 
         if (text.length() > MODEL_LENGTH) {
@@ -65,12 +65,12 @@ public class ModifyCarPanelValidator {
         return true;
     }
 
-    public static boolean isEngineTypeValid(int selectedIndex) {
+    private static boolean isEngineTypeValid(int selectedIndex) {
 
         return true;
     }
 
-    public static boolean isRowSelected(int selectedRow) {
+    protected static boolean isRowSelected(int selectedRow) {
         
         if (selectedRow == -1) {
             warningMessage("Selecciona una fila en la tabla.", "Advertencia");
@@ -80,7 +80,7 @@ public class ModifyCarPanelValidator {
         }
     }
 
-    public static boolean carExists(String str) {
+    protected static boolean carExists(String str) {
         String licensePlate = str.trim();
         Car car = CarService.read(licensePlate);
 
