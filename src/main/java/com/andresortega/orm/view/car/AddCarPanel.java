@@ -11,6 +11,7 @@ import javax.swing.DefaultComboBoxModel;
  * @author Andrés
  */
 public class AddCarPanel extends javax.swing.JPanel {
+    
     private DefaultComboBoxModel modelCmbEngineType;
     /**
      * Creates new form AddCarPanel
