@@ -18,7 +18,7 @@ public class AddRepairPanelValidator {
     private final static int PRICE_LENGTH = 10;
     private final static int DESCRIPTION_LENGTH = 200;
 
-    static boolean areFieldsValid(Car selectedCar, Customer selectedCustomer, String price, String description) {
+    protected static boolean areFieldsValid(Car selectedCar, Customer selectedCustomer, String price, String description) {
         if (!isCarValid(selectedCar)) {
             return false;
         }
@@ -35,7 +35,7 @@ public class AddRepairPanelValidator {
         return true;
     }
 
-    public static boolean isCarValid(Car c) {
+    private static boolean isCarValid(Car c) {
 
         if (c == null) {
             warningMessage("Selecciona un coche", "Advertencia");
@@ -48,7 +48,7 @@ public class AddRepairPanelValidator {
         return true;
     }
 
-    public static boolean carExists(Car c) {
+    private static boolean carExists(Car c) {
         Car car = CarService.read(c);
 
         if (car == null) {
@@ -58,7 +58,7 @@ public class AddRepairPanelValidator {
         }
     }
 
-    public static boolean isCustomerValid(Customer c) {
+    private static boolean isCustomerValid(Customer c) {
 
         if (c == null) {
             warningMessage("Selecciona un cliente.", "Advertencia");
@@ -71,7 +71,7 @@ public class AddRepairPanelValidator {
         return true;
     }
 
-    public static boolean customerExists(Customer c) {
+    private static boolean customerExists(Customer c) {
         Customer customer = CustomerService.read(c);
 
         if (customer == null) {
@@ -81,7 +81,7 @@ public class AddRepairPanelValidator {
         }
     }
 
-    public static boolean isPriceValid(String str) {
+    private static boolean isPriceValid(String str) {
         String text = str.trim();
 
         if (text.isBlank()) {
@@ -107,7 +107,7 @@ public class AddRepairPanelValidator {
         }
     }
 
-    public static boolean isDescriptionValid(String str) {
+    private static boolean isDescriptionValid(String str) {
         String text = str.trim();
 
         if (text.isBlank()) {
@@ -122,7 +122,7 @@ public class AddRepairPanelValidator {
         return true;
     }
 
-    public static boolean isInsertRestricted(Repair r) {
+    protected static boolean isInsertRestricted(Repair r) {
         if (carHasToBePickedUp(r)) {
             errorMessage("Tienes coche(s) para recoger, recógelos primero antes de reparar otro.", "Error");
             return true;
