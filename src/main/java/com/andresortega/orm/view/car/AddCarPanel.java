@@ -147,6 +147,7 @@ public class AddCarPanel extends javax.swing.JPanel {
             return;
         }
         saveCar();
+        cleanFields();
     }
     
     private boolean areFieldsValid(){
@@ -173,8 +174,6 @@ public class AddCarPanel extends javax.swing.JPanel {
         CarService.create(car);
         
         infoMessage("Coche guardado", "Información");
-        
-        cleanFields();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
