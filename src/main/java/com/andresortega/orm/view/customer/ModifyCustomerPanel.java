@@ -180,7 +180,9 @@ public class ModifyCustomerPanel extends javax.swing.JPanel {
     }
     
     private boolean isRowSelected() {
-        return ModifyCustomerPanelValidator.isRowSelected(jTable1.getSelectedRow());
+        int selectedRow = jTable1.getSelectedRow();
+        
+        return ModifyCustomerPanelValidator.isRowSelected(selectedRow);
     }
     
     private void updateCar() {
