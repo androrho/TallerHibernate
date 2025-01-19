@@ -1,12 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package com.andresortega.orm.view.repair;
 
 import com.andresortega.controller.RepairService;
 import com.andresortega.model.Repair;
 import com.andresortega.model.RepairState;
+import static com.andresortega.orm.view.util.Dialog.infoMessage;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTable;
@@ -18,8 +15,10 @@ import javax.swing.table.TableColumnModel;
  * @author Andrés
  */
 public class ManageRepairPanel extends javax.swing.JPanel {
+
     private DefaultComboBoxModel modelCmbRepairState;
     DefaultTableModel modelTableRepairs;
+
     /**
      * Creates new form ManageRepairPanle
      */
@@ -28,16 +27,16 @@ public class ManageRepairPanel extends javax.swing.JPanel {
         initTableModel();
         initComponents();
         initTableModelData();
-        cmbRepairState.setSelectedIndex(-1);
-        setColumnWidths(jTable1,-1, 70, 70, 70, 100, 400, 70);
+        cleanFields();
+        setColumnWidths(jTable1, -1, 70, 70, 70, 100, 400, 70);
     }
 
-    private void initComboBoxModel(){
+    private void initComboBoxModel() {
         modelCmbRepairState = new DefaultComboBoxModel(RepairState.values());
     }
-    
-    private void initTableModel(){        
-        String[] columnNames = {"Id","Cliente", "Coche", "Precio", "Fecha y hora", "Descripción", "Estado"};
+
+    private void initTableModel() {
+        String[] columnNames = {"Id", "Cliente", "Coche", "Precio", "Fecha y hora", "Descripción", "Estado"};
 
         modelTableRepairs = new DefaultTableModel(columnNames, 0) {
             @Override
@@ -47,12 +46,12 @@ public class ManageRepairPanel extends javax.swing.JPanel {
             }
         };
     }
-    
-    private void initTableModelData(){
+
+    private void initTableModelData() {
         List<Repair> repairs = RepairService.read();
         for (int i = 0; i < repairs.size(); i++) {
             Repair repair = repairs.get(i);
-            
+
             String id = String.valueOf(repair.getRepairId());
             String customer = repair.getCustomer().toString();
             String car = repair.getCar().toString();
@@ -66,18 +65,18 @@ public class ManageRepairPanel extends javax.swing.JPanel {
             modelTableRepairs.addRow(array);
         }
     }
-    
+
     private void setColumnWidths(JTable table, int... widths) {
-    TableColumnModel columnModel = table.getColumnModel();
-    for (int i = 0; i < widths.length; i++) {
-        columnModel.getColumn(i).setMaxWidth(widths[i]);
+        TableColumnModel columnModel = table.getColumnModel();
+        for (int i = 0; i < widths.length; i++) {
+            columnModel.getColumn(i).setMaxWidth(widths[i]);
+        }
+
+        jTable1.getColumn("Id").setMinWidth(0); // Must be set before maxWidth!!
+        jTable1.getColumn("Id").setMaxWidth(0);
+        jTable1.getColumn("Id").setWidth(0);
     }
-    
-    jTable1.getColumn("Id").setMinWidth(0); // Must be set before maxWidth!!
-    jTable1.getColumn("Id").setMaxWidth(0);
-    jTable1.getColumn("Id").setWidth(0);
-}
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -159,7 +158,6 @@ public class ManageRepairPanel extends javax.swing.JPanel {
         update();
     }//GEN-LAST:event_btnUpdateActionPerformed
 
-    
     private void update() {
         if (!areFieldsValid()) {
             return;
@@ -167,57 +165,58 @@ public class ManageRepairPanel extends javax.swing.JPanel {
         if (!isRowSelected()) {
             return;
         }
-        if (isUpdateRestricted()){
+        if (isUpdateRestricted()) {
             return;
         }
         updateRepair();
+        infoMessage("Reparación modificada", "Info");
         updateTable();
     }
-    
+
     private boolean areFieldsValid() {
         int selectedIndex = cmbRepairState.getSelectedIndex();
         return ManageRepairPanelValidator.areFieldsValid(selectedIndex);
     }
-    
+
     private boolean isRowSelected() {
         return ManageRepairPanelValidator.isRowSelected(jTable1.getSelectedRow());
     }
-    
+
     private boolean isUpdateRestricted() {
         int repairId = getRepairId();
         Repair repair = RepairService.read(repairId);
 
         return ManageRepairPanelValidator.isUpdateRestricted(repair);
     }
-    
-    private int getRepairId(){
+
+    private int getRepairId() {
         return Integer.parseInt(jTable1.getValueAt(jTable1.getSelectedRow(), 0).toString());
     }
-    
-    private void updateRepair(){
+
+    private void updateRepair() {
         int repairId = getRepairId();
         Repair repair = RepairService.read(repairId);
-        RepairState repairState = (RepairState)cmbRepairState.getSelectedItem();
-        
+        RepairState repairState = (RepairState) cmbRepairState.getSelectedItem();
+
         repair.setRepairState(repairState);
-        
+
         RepairService.update(repair);
     }
-    
-    private void updateTable(){
+
+    private void updateTable() {
         deleteTableModelRows();
         initTableModelData();
     }
-    
-    private void deleteTableModelRows(){
+
+    private void deleteTableModelRows() {
         int rowCount = modelTableRepairs.getRowCount();
 
         for (int i = rowCount - 1; i >= 0; i--) {
             modelTableRepairs.removeRow(i);
         }
     }
-    
-    private void cleanFields(){
+
+    private void cleanFields() {
         cmbRepairState.setSelectedIndex(-1);
     }
 
