@@ -3,7 +3,7 @@ package com.andresortega.orm.view.customer;
 import com.andresortega.controller.CustomerService;
 import com.andresortega.model.Customer;
 import com.andresortega.model.Repair;
-import static com.andresortega.orm.view.car.AddCarPanel.infoMessage;
+import static com.andresortega.orm.view.util.Dialog.infoMessage;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;

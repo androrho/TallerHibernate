@@ -3,7 +3,7 @@ package com.andresortega.orm.view.car;
 import com.andresortega.controller.CarService;
 import com.andresortega.model.Car;
 import com.andresortega.model.EngineType;
-import static com.andresortega.orm.view.car.AddCarPanel.infoMessage;
+import static com.andresortega.orm.view.util.Dialog.infoMessage;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;

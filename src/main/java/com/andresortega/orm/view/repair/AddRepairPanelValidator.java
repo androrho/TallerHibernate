@@ -6,8 +6,7 @@ import com.andresortega.controller.RepairService;
 import com.andresortega.model.Car;
 import com.andresortega.model.Customer;
 import com.andresortega.model.Repair;
-import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
+import static com.andresortega.orm.view.util.Dialog.errorMessage;
 
 /**
  *
@@ -140,11 +139,5 @@ public class AddRepairPanelValidator {
     
     private static boolean carIsInGarage(Repair r) {
         return RepairService.carIsInGarage(r);
-    }
-
-    public static void errorMessage(String message, String title) {
-        String rutaImagen = "src/images/advertencia.png";
-        ImageIcon icono = new ImageIcon(rutaImagen);
-        JOptionPane.showMessageDialog(null, message, title, JOptionPane.WARNING_MESSAGE, icono);
     }
 }

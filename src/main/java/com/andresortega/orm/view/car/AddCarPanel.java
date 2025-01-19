@@ -3,9 +3,8 @@ package com.andresortega.orm.view.car;
 import com.andresortega.controller.CarService;
 import com.andresortega.model.Car;
 import com.andresortega.model.EngineType;
+import static com.andresortega.orm.view.util.Dialog.infoMessage;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -176,12 +175,6 @@ public class AddCarPanel extends javax.swing.JPanel {
         infoMessage("Coche guardado", "Información");
         
         cleanFields();
-    }
-    
-    public static void infoMessage(String message, String title) {
-        String rutaImagen = "src/images/info.png";
-        ImageIcon icono = new ImageIcon(rutaImagen);
-        JOptionPane.showMessageDialog(null, message, title, JOptionPane.INFORMATION_MESSAGE, icono);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

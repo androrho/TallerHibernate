@@ -6,7 +6,7 @@ import com.andresortega.controller.RepairService;
 import com.andresortega.model.Car;
 import com.andresortega.model.Customer;
 import com.andresortega.model.Repair;
-import static com.andresortega.orm.view.car.AddCarPanel.infoMessage;
+import static com.andresortega.orm.view.util.Dialog.infoMessage;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 

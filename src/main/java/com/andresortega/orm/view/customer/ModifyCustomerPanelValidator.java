@@ -1,7 +1,6 @@
 package com.andresortega.orm.view.customer;
 
-import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
+import static com.andresortega.orm.view.util.Dialog.errorMessage;
 
 /**
  *
@@ -83,11 +82,5 @@ public class ModifyCustomerPanelValidator {
         } else {
             return true;
         }
-    }
-
-    public static void errorMessage(String message, String title) {
-        String rutaImagen = "src/images/advertencia.png";
-        ImageIcon icono = new ImageIcon(rutaImagen);
-        JOptionPane.showMessageDialog(null, message, title, JOptionPane.WARNING_MESSAGE, icono);
     }
 }

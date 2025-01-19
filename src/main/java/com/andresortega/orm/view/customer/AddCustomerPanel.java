@@ -2,8 +2,7 @@ package com.andresortega.orm.view.customer;
 
 import com.andresortega.controller.CustomerService;
 import com.andresortega.model.Customer;
-import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
+import static com.andresortega.orm.view.util.Dialog.infoMessage;
 
 /**
  *
@@ -152,12 +151,6 @@ public class AddCustomerPanel extends javax.swing.JPanel {
         infoMessage("Cliente guardado", "Información");
         
         cleanFields();
-    }
-    
-    public static void infoMessage(String message, String title) {
-        String rutaImagen = "src/images/info.png";
-        ImageIcon icono = new ImageIcon(rutaImagen);
-        JOptionPane.showMessageDialog(null, message, title, JOptionPane.INFORMATION_MESSAGE, icono);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
