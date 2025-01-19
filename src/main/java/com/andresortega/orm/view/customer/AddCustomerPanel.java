@@ -145,7 +145,6 @@ public class AddCustomerPanel extends javax.swing.JPanel {
         CustomerService.create(customer);
     }
     
-    
     private void cleanFields(){
         txtDNI.setText("");
         txtName.setText("");
