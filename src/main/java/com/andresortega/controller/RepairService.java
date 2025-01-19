@@ -261,4 +261,32 @@ public class RepairService {
             return false;
         }
     }
+    
+    public static boolean repairIsPickedUp(Repair r){
+        EntityManager em = PersistenceUtil.getEntityManagerFactory().createEntityManager();
+        EntityTransaction tx = em.getTransaction();
+        Integer count = null;
+        
+        try {
+            tx.begin();
+            String sql = "SELECT COUNT(*) FROM Repairs WHERE repairId = :repairId AND repairState = 4";
+            count = (Integer) em.createNativeQuery(sql, Integer.class)
+                    .setParameter("carId", r.getCar().getCarId())
+                    .getSingleResult();
+            tx.commit();
+        } catch (NoResultException e) {
+            tx.rollback();
+        } catch (Exception e) {
+            tx.rollback();
+        } finally {
+            em.close();
+        }
+        
+        if (count >= 1){
+            System.out.println("El coche ya no está en el taller.");
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
