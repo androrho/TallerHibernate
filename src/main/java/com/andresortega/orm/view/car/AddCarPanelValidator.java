@@ -2,6 +2,7 @@ package com.andresortega.orm.view.car;
 
 import com.andresortega.controller.CarService;
 import com.andresortega.model.Car;
+import static com.andresortega.orm.view.util.Dialog.errorMessage;
 import static com.andresortega.orm.view.util.Dialog.warningMessage;
 
 
@@ -36,11 +37,11 @@ public class AddCarPanelValidator {
         String text = str.trim();
 
         if (text.isBlank()) {
-            warningMessage("Introduce una matrícula.", "Error");
+            warningMessage("Introduce una matrícula.", "Advertencia");
             return false;
         }
         if (text.length() > LICENSE_PLATE_LENGTH) {
-            warningMessage("Número máximo de carácteres en matrícula es " + LICENSE_PLATE_LENGTH + ".", "Error");
+            warningMessage("Número máximo de carácteres en matrícula es " + LICENSE_PLATE_LENGTH + ".", "Advertencia");
             return false;
         }
 
@@ -51,11 +52,11 @@ public class AddCarPanelValidator {
         String text = str.trim();
 
         if (text.isBlank()) {
-            warningMessage("Introduce una marca.", "Error");
+            warningMessage("Introduce una marca.", "Advertencia");
             return false;
         }
         if (text.length() > BRAND_LENGTH) {
-            warningMessage("Número máximo de carácteres en marca es " + BRAND_LENGTH + ".", "Error");
+            warningMessage("Número máximo de carácteres en marca es " + BRAND_LENGTH + ".", "Advertencia");
             return false;
         }
 
@@ -66,11 +67,11 @@ public class AddCarPanelValidator {
         String text = str.trim();
 
         if (text.isBlank()) {
-            warningMessage("Introduce un modelo.", "Error");
+            warningMessage("Introduce un modelo.", "Advertencia");
             return false;
         }
         if (text.length() > MODEL_LENGTH) {
-            warningMessage("Número máximo de carácteres en modelo es " + MODEL_LENGTH + ".", "Error");
+            warningMessage("Número máximo de carácteres en modelo es " + MODEL_LENGTH + ".", "Advertencia");
             return false;
         }
 
@@ -80,7 +81,7 @@ public class AddCarPanelValidator {
     public static boolean isEngineTypeValid(int selectedIndex) {
 
         if (selectedIndex == -1) {
-            warningMessage("Selecciona un tipo de motor.", "Error");
+            warningMessage("Selecciona un tipo de motor.", "Advertencia");
             return false;
         }
 
@@ -92,7 +93,7 @@ public class AddCarPanelValidator {
         Car car = CarService.read(licensePlate);
 
         if (car != null) {
-            warningMessage("El coche ya está registrado", "Error");
+            errorMessage("El coche ya está registrado", "Error");
             return true;
         } else {
             return false;
