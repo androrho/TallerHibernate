@@ -26,6 +26,24 @@ public class CarRepairHistoryPanel extends javax.swing.JPanel {
         initTableModel();
         initComponents();
     }
+    
+    private void initComboBoxModel() {
+        List<Car> cars = CarService.read();
+        modelCmbCars = new DefaultComboBoxModel();
+        modelCmbCars.addAll(cars);
+    }
+    
+    private void initTableModel() {
+        String[] columnNames = {"Cliente", "Precio", "Fecha y hora", "Descripción"};
+
+        modelTable = new DefaultTableModel(columnNames, 0) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                //all cells false
+                return false;
+            }
+        };
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -87,24 +105,6 @@ public class CarRepairHistoryPanel extends javax.swing.JPanel {
         updateTable();
     }//GEN-LAST:event_cmbCarsItemStateChanged
 
-    private void initComboBoxModel() {
-        List<Car> cars = CarService.read();
-        modelCmbCars = new DefaultComboBoxModel();
-        modelCmbCars.addAll(cars);
-    }
-    
-    private void initTableModel() {
-        String[] columnNames = {"Cliente", "Precio", "Fecha y hora", "Descripción"};
-
-        modelTable = new DefaultTableModel(columnNames, 0) {
-            @Override
-            public boolean isCellEditable(int row, int column) {
-                //all cells false
-                return false;
-            }
-        };
-    }
-    
     private void updateTable(){
         deleteTableModelRows();
         addTableModelData();
