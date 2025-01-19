@@ -30,7 +30,7 @@ public class ModifyCustomerPanelValidator {
         String text = str.trim();
 
         if (text.length() != DNI_LENGTH) {
-            warningMessage("Número de carácteres en dni es " + DNI_LENGTH + ".", "Error");
+            warningMessage("Número de carácteres en dni es " + DNI_LENGTH + ".", "Advertencia");
             return false;
         }
 
@@ -41,7 +41,7 @@ public class ModifyCustomerPanelValidator {
         String text = str.trim();
 
         if (text.length() > NAME_LENGTH) {
-            warningMessage("Número máximo de carácteres en nombre es " + NAME_LENGTH + ".", "Error");
+            warningMessage("Número máximo de carácteres en nombre es " + NAME_LENGTH + ".", "Advertencia");
             return false;
         }
 
@@ -52,7 +52,7 @@ public class ModifyCustomerPanelValidator {
         String text = str.trim();
 
         if (text.length() > AGE_LENGTH) {
-            warningMessage("Número máximo de carácteres en edad es " + AGE_LENGTH + ".", "Error");
+            warningMessage("Número máximo de carácteres en edad es " + AGE_LENGTH + ".", "Advertencia");
             return false;
         }
         try {
@@ -61,14 +61,14 @@ public class ModifyCustomerPanelValidator {
             if (age > 0) {
                 return true;
             } else {
-                warningMessage("La edad tiene que ser un número positivo", "Error");
+                warningMessage("La edad tiene que ser un número positivo", "Advertencia");
                 return false;
             }
         } catch (NumberFormatException ex) {
             if (text.length() <= 0) {
                 return true;
             } else {
-                warningMessage("La edad tiene que ser un número", "Error");
+                warningMessage("La edad tiene que ser un número", "Advertencia");
                 return false;
             }
         }
@@ -77,7 +77,7 @@ public class ModifyCustomerPanelValidator {
     public static boolean isRowSelected(int selectedRow) {
 
         if (selectedRow == -1) {
-            warningMessage("Selecciona una fila en la tabla.", "Error");
+            warningMessage("Selecciona una fila en la tabla.", "Advertencia");
             return false;
         } else {
             return true;
