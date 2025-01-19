@@ -50,9 +50,9 @@ public class ManageRepairPanel extends javax.swing.JPanel {
 
         cmbRepairState.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        btnUpdate.setText("jButton1");
+        btnUpdate.setText("Actualizar");
 
-        btnClean.setText("jButton2");
+        btnClean.setText("Limpiar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
