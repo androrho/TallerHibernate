@@ -6,6 +6,7 @@ import com.andresortega.controller.RepairService;
 import com.andresortega.model.Car;
 import com.andresortega.model.Customer;
 import com.andresortega.model.Repair;
+import static com.andresortega.orm.view.util.Dialog.errorMessage;
 import static com.andresortega.orm.view.util.Dialog.warningMessage;
 
 /**
@@ -37,11 +38,11 @@ public class AddRepairPanelValidator {
     public static boolean isCarValid(Car c) {
 
         if (c == null) {
-            warningMessage("Selecciona un coche", "Error");
+            warningMessage("Selecciona un coche", "Advertencia");
             return false;
         }
         if (!carExists(c)) {
-            warningMessage("El coche no existe", "Error");
+            warningMessage("El coche no existe", "Advertencia");
             return false;
         }
         return true;
@@ -60,11 +61,11 @@ public class AddRepairPanelValidator {
     public static boolean isCustomerValid(Customer c) {
 
         if (c == null) {
-            warningMessage("Selecciona un cliente.", "Error");
+            warningMessage("Selecciona un cliente.", "Advertencia");
             return false;
         }
         if (!customerExists(c)) {
-            warningMessage("El cliente no existe", "Error");
+            warningMessage("El cliente no existe", "Advertencia");
             return false;
         }
         return true;
@@ -84,11 +85,11 @@ public class AddRepairPanelValidator {
         String text = str.trim();
 
         if (text.isBlank()) {
-            warningMessage("Introduce un precio.", "Error");
+            warningMessage("Introduce un precio.", "Advertencia");
             return false;
         }
         if (text.length() > PRICE_LENGTH) {
-            warningMessage("Número máximo de carácteres en precio es " + PRICE_LENGTH + ".", "Error");
+            warningMessage("Número máximo de carácteres en precio es " + PRICE_LENGTH + ".", "Advertencia");
             return false;
         }
         try {
@@ -97,11 +98,11 @@ public class AddRepairPanelValidator {
             if (price > 0) {
                 return true;
             } else {
-                warningMessage("El precio tiene que ser un número positivo", "Error");
+                warningMessage("El precio tiene que ser un número positivo", "Advertencia");
                 return false;
             }
         } catch (NumberFormatException ex) {
-            warningMessage("El precio tiene que ser un número", "Error");
+            warningMessage("El precio tiene que ser un número", "Advertencia");
             return false;
         }
     }
@@ -110,11 +111,11 @@ public class AddRepairPanelValidator {
         String text = str.trim();
 
         if (text.isBlank()) {
-            warningMessage("Introduce una descripción.", "Error");
+            warningMessage("Introduce una descripción.", "Advertencia");
             return false;
         }
         if (text.length() > DESCRIPTION_LENGTH) {
-            warningMessage("Número máximo de carácteres en descripción es " + DESCRIPTION_LENGTH + ".", "Error");
+            warningMessage("Número máximo de carácteres en descripción es " + DESCRIPTION_LENGTH + ".", "Advertencia");
             return false;
         }
 
@@ -123,11 +124,11 @@ public class AddRepairPanelValidator {
 
     public static boolean isInsertRestricted(Repair r) {
         if (carHasToBePickedUp(r)) {
-            warningMessage("Tienes coche(s) para recoger, recógelos primero antes de reparar otro.", "Error");
+            errorMessage("Tienes coche(s) para recoger, recógelos primero antes de reparar otro.", "Error");
             return true;
         }
         if (carIsInGarage(r)) {
-            warningMessage("El coche está en el taller por reparaciones de otro cliente.", "Error");
+            errorMessage("El coche está en el taller por reparaciones de otro cliente.", "Error");
             return true;
         }
         return false;
