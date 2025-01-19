@@ -11,9 +11,9 @@ import static com.andresortega.orm.view.util.Dialog.warningMessage;
  */
 public class ModifyCarPanelValidator {
     
-    final static int LICENSE_PLATE_LENGTH = 9;
-    final static int BRAND_LENGTH = 45;
-    final static int MODEL_LENGTH = 45;
+    private final static int LICENSE_PLATE_LENGTH = 9;
+    private final static int BRAND_LENGTH = 45;
+    private final static int MODEL_LENGTH = 45;
     
     static boolean areFieldsValid(String licensePlate, String brand, String model, int selectedIndex) {
         if (!isLicensePlateValid(licensePlate)) {
