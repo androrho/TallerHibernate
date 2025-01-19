@@ -15,8 +15,8 @@ import javax.swing.table.DefaultTableModel;
  */
 public class CarRepairHistoryPanel extends javax.swing.JPanel {
     
-    DefaultComboBoxModel modelCmbCars;
-    DefaultTableModel modelTable;
+    private DefaultComboBoxModel modelCmbCars;
+    private DefaultTableModel modelTable;
     
     /**
      * Creates new form mnuCarRepairHistory
