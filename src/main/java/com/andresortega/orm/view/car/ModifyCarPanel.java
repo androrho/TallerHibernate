@@ -28,6 +28,38 @@ public class ModifyCarPanel extends javax.swing.JPanel {
         cmbEngineType.setSelectedIndex(-1);
     }
 
+    private void initComboBoxModel() {
+        modelCmbEngineType = new DefaultComboBoxModel(EngineType.values());
+    }
+    
+    private void initTableModel() {
+        String[] columnNames = {"Matrícula", "Marca", "Modelo", "Tipo Motor"};
+
+        modelTable = new DefaultTableModel(columnNames, 0) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                //all cells false
+                return false;
+            }
+        };
+    }
+
+    private void initTableModelData() {
+        List<Car> cars = CarService.read();
+        for (int i = 0; i < cars.size(); i++) {
+            Car car = cars.get(i);
+
+            String licensePlate = car.getLicensePlate();
+            String brand = car.getBrand();
+            String model = car.getModel();
+            EngineType engineType = car.getEngineType();
+
+            String[] array = {licensePlate, brand, model, engineType.toString()};
+
+            modelTable.addRow(array);
+        }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -156,8 +188,22 @@ public class ModifyCarPanel extends javax.swing.JPanel {
             return;
         }
         updateCar();
+        cleanFields();
+        updateTable();
     }
 
+    private boolean areFieldsValid() {
+        String licensePlate = this.txtLicensePlate.getText().trim();
+        String brand = this.txtBrand.getText().trim();
+        String model = this.txtModel.getText().trim();
+        int selectedIndex = this.cmbEngineType.getSelectedIndex();
+        return ModifyCarPanelValidator.areFieldsValid(licensePlate, brand, model, selectedIndex);
+    }
+    
+    private boolean isRowSelected() {
+        return ModifyCarPanelValidator.isRowSelected(jTable1.getSelectedRow());
+    }
+    
     private void updateCar() {
         String currentLicensePlate = getCurrentLicensePlate();
         Car car = CarService.read(currentLicensePlate);
@@ -170,72 +216,8 @@ public class ModifyCarPanel extends javax.swing.JPanel {
         CarService.update(car);
 
         infoMessage("Coche actualizado", "Información");
-
-        cleanFields();
-        deleteTableModelRows();
-        initTableModelData();
-
     }
-
-    private boolean areFieldsValid() {
-        String licensePlate = this.txtLicensePlate.getText().trim();
-        String brand = this.txtBrand.getText().trim();
-        String model = this.txtModel.getText().trim();
-        int selectedIndex = this.cmbEngineType.getSelectedIndex();
-        return ModifyCarPanelValidator.areFieldsValid(licensePlate, brand, model, selectedIndex);
-    }
-
-    private void initTableModel() {
-        String[] columnNames = {"Matrícula", "Marca", "Modelo", "Tipo Motor"};
-
-        modelTable = new DefaultTableModel(columnNames, 0) {
-            @Override
-            public boolean isCellEditable(int row, int column) {
-                //all cells false
-                return false;
-            }
-        };
-    }
-
-    private void initTableModelData() {
-        List<Car> cars = CarService.read();
-        for (int i = 0; i < cars.size(); i++) {
-            Car car = cars.get(i);
-
-            String licensePlate = car.getLicensePlate();
-            String brand = car.getBrand();
-            String model = car.getModel();
-            EngineType engineType = car.getEngineType();
-
-            String[] array = {licensePlate, brand, model, engineType.toString()};
-
-            modelTable.addRow(array);
-        }
-    }
-
-    private boolean isRowSelected() {
-        return ModifyCarPanelValidator.isRowSelected(jTable1.getSelectedRow());
-    }
-
-    private void deleteTableModelRows() {
-        int rowCount = modelTable.getRowCount();
-
-        for (int i = rowCount - 1; i >= 0; i--) {
-            modelTable.removeRow(i);
-        }
-    }
-
-    private void initComboBoxModel() {
-        modelCmbEngineType = new DefaultComboBoxModel(EngineType.values());
-    }
-
-    private void cleanFields() {
-        txtLicensePlate.setText("");
-        txtBrand.setText("");
-        txtModel.setText("");
-        cmbEngineType.setSelectedIndex(-1);
-    }
-
+    
     private String getCurrentLicensePlate() {
         return ((String) jTable1.getValueAt(jTable1.getSelectedRow(), 0)).trim();
     }
@@ -279,6 +261,28 @@ public class ModifyCarPanel extends javax.swing.JPanel {
             return updated;
         }
     }
+    
+    private void updateTable() {
+        deleteTableModelRows();
+        initTableModelData();
+    }
+    
+    private void deleteTableModelRows() {
+        int rowCount = modelTable.getRowCount();
+
+        for (int i = rowCount - 1; i >= 0; i--) {
+            modelTable.removeRow(i);
+        }
+    }
+
+    private void cleanFields() {
+        txtLicensePlate.setText("");
+        txtBrand.setText("");
+        txtModel.setText("");
+        cmbEngineType.setSelectedIndex(-1);
+    }
+
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClean;
