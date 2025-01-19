@@ -1,6 +1,5 @@
 package com.andresortega.controller;
 
-import com.andresortega.model.Car;
 import com.andresortega.model.Customer;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
