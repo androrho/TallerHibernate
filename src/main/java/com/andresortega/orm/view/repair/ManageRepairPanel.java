@@ -17,7 +17,7 @@ import javax.swing.table.TableColumnModel;
 public class ManageRepairPanel extends javax.swing.JPanel {
 
     private DefaultComboBoxModel modelCmbRepairState;
-    DefaultTableModel modelTableRepairs;
+    private DefaultTableModel modelTableRepairs;
 
     /**
      * Creates new form ManageRepairPanle
