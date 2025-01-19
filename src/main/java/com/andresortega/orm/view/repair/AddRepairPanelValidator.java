@@ -15,8 +15,8 @@ import static com.andresortega.orm.view.util.Dialog.warningMessage;
  */
 public class AddRepairPanelValidator {
 
-    final static int PRICE_LENGTH = 10;
-    final static int DESCRIPTION_LENGTH = 200;
+    private final static int PRICE_LENGTH = 10;
+    private final static int DESCRIPTION_LENGTH = 200;
 
     static boolean areFieldsValid(Car selectedCar, Customer selectedCustomer, String price, String description) {
         if (!isCarValid(selectedCar)) {
