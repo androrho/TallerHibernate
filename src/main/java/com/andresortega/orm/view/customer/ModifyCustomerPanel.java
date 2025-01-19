@@ -14,7 +14,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ModifyCustomerPanel extends javax.swing.JPanel {
     
-    DefaultTableModel modelTable;
+    private DefaultTableModel modelTable;
     
     /**
      * Creates new form mnuModifyCustomer
