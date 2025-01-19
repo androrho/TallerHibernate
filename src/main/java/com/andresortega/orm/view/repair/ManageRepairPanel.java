@@ -4,7 +4,12 @@
  */
 package com.andresortega.orm.view.repair;
 
+import com.andresortega.controller.RepairService;
+import com.andresortega.model.Car;
+import com.andresortega.model.EngineType;
+import com.andresortega.model.Repair;
 import com.andresortega.model.RepairState;
+import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
 
@@ -22,6 +27,8 @@ public class ManageRepairPanel extends javax.swing.JPanel {
         initComboBoxModel();
         initTableModel();
         initComponents();
+        initTableModelData();
+        cmbRepairState.setSelectedIndex(-1);
     }
 
     private void initComboBoxModel(){
@@ -38,6 +45,23 @@ public class ManageRepairPanel extends javax.swing.JPanel {
                 return false;
             }
         };
+    }
+    
+    private void initTableModelData(){
+        List<Repair> repairs = RepairService.read();
+        for (int i = 0; i < repairs.size(); i++) {
+            Repair repair = repairs.get(i);
+
+            String customer = repair.getCustomer().toString();
+            String car = repair.getCar().toString();
+            String price = String.valueOf(repair.getPrice());
+            String timeStamp = repair.getDate().toString();
+            String repairState = repair.getRepairState().toString();
+
+            String[] array = {customer, car, price, timeStamp, repairState};
+
+            modelTableRepairs.addRow(array);
+        }
     }
     
     /**
