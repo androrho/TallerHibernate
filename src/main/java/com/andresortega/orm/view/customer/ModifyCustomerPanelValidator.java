@@ -12,7 +12,7 @@ public class ModifyCustomerPanelValidator {
     private final static int NAME_LENGTH = 45;
     private final static int AGE_LENGTH = 10;
 
-    static boolean areFieldsValid(String dni, String name, String age) {
+    protected static boolean areFieldsValid(String dni, String name, String age) {
         if (!isDniValid(dni)) {
             return false;
         }
@@ -26,7 +26,7 @@ public class ModifyCustomerPanelValidator {
         return true;
     }
 
-    public static boolean isDniValid(String str) {
+    private static boolean isDniValid(String str) {
         String text = str.trim();
 
         if (text.length() != DNI_LENGTH) {
@@ -37,7 +37,7 @@ public class ModifyCustomerPanelValidator {
         return true;
     }
 
-    public static boolean isNameValid(String str) {
+    private static boolean isNameValid(String str) {
         String text = str.trim();
 
         if (text.length() > NAME_LENGTH) {
@@ -48,7 +48,7 @@ public class ModifyCustomerPanelValidator {
         return true;
     }
 
-    public static boolean isAgeValid(String str) {
+    private static boolean isAgeValid(String str) {
         String text = str.trim();
 
         if (text.length() > AGE_LENGTH) {
@@ -74,7 +74,7 @@ public class ModifyCustomerPanelValidator {
         }
     }
 
-    public static boolean isRowSelected(int selectedRow) {
+    protected static boolean isRowSelected(int selectedRow) {
 
         if (selectedRow == -1) {
             warningMessage("Selecciona una fila en la tabla.", "Advertencia");
