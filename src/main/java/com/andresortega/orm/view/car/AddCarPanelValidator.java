@@ -16,7 +16,7 @@ public class AddCarPanelValidator {
     private final static int BRAND_LENGTH = 45;
     private final static int MODEL_LENGTH = 45;
 
-    static boolean areFieldsValid(String licensePlate, String brand, String model, int selectedIndex) {
+    protected static boolean areFieldsValid(String licensePlate, String brand, String model, int selectedIndex) {
         if (!isLicensePlateValid(licensePlate)) {
             return false;
         }
@@ -33,7 +33,7 @@ public class AddCarPanelValidator {
         return true;
     }
 
-    public static boolean isLicensePlateValid(String str) {
+    private static boolean isLicensePlateValid(String str) {
         String text = str.trim();
 
         if (text.isBlank()) {
@@ -48,7 +48,7 @@ public class AddCarPanelValidator {
         return true;
     }
 
-    public static boolean isBrandValid(String str) {
+    private static boolean isBrandValid(String str) {
         String text = str.trim();
 
         if (text.isBlank()) {
@@ -63,7 +63,7 @@ public class AddCarPanelValidator {
         return true;
     }
 
-    public static boolean isModelValid(String str) {
+    private static boolean isModelValid(String str) {
         String text = str.trim();
 
         if (text.isBlank()) {
@@ -78,7 +78,7 @@ public class AddCarPanelValidator {
         return true;
     }
 
-    public static boolean isEngineTypeValid(int selectedIndex) {
+    private static boolean isEngineTypeValid(int selectedIndex) {
 
         if (selectedIndex == -1) {
             warningMessage("Selecciona un tipo de motor.", "Advertencia");
@@ -88,7 +88,7 @@ public class AddCarPanelValidator {
         return true;
     }
 
-    public static boolean carExists(String str) {
+    protected static boolean carExists(String str) {
         String licensePlate = str.trim();
         Car car = CarService.read(licensePlate);
 
