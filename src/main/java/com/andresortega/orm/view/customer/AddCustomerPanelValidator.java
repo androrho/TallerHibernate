@@ -2,7 +2,7 @@ package com.andresortega.orm.view.customer;
 
 import com.andresortega.controller.CustomerService;
 import com.andresortega.model.Customer;
-import static com.andresortega.orm.view.util.Dialog.errorMessage;
+import static com.andresortega.orm.view.util.Dialog.warningMessage;
 
 /**
  *
@@ -32,11 +32,11 @@ public class AddCustomerPanelValidator {
         String text = str.trim();
 
         if (text.isBlank()) {
-            errorMessage("Introduce un dni.", "Error");
+            warningMessage("Introduce un dni.", "Error");
             return false;
         }
         if (text.length() != DNI_LENGTH) {
-            errorMessage("Número de carácteres en dni es " + DNI_LENGTH + ".", "Error");
+            warningMessage("Número de carácteres en dni es " + DNI_LENGTH + ".", "Error");
             return false;
         }
 
@@ -47,11 +47,11 @@ public class AddCustomerPanelValidator {
         String text = str.trim();
 
         if (text.isBlank()) {
-            errorMessage("Introduce un nombre.", "Error");
+            warningMessage("Introduce un nombre.", "Error");
             return false;
         }
         if (text.length() > NAME_LENGTH) {
-            errorMessage("Número máximo de carácteres en nombre es " + NAME_LENGTH + ".", "Error");
+            warningMessage("Número máximo de carácteres en nombre es " + NAME_LENGTH + ".", "Error");
             return false;
         }
 
@@ -62,11 +62,11 @@ public class AddCustomerPanelValidator {
         String text = str.trim();
 
         if (text.isBlank()) {
-            errorMessage("Introduce una edad.", "Error");
+            warningMessage("Introduce una edad.", "Error");
             return false;
         }
         if (text.length() > AGE_LENGTH) {
-            errorMessage("Número máximo de carácteres en edad es " + AGE_LENGTH + ".", "Error");
+            warningMessage("Número máximo de carácteres en edad es " + AGE_LENGTH + ".", "Error");
             return false;
         }
         try{
@@ -75,11 +75,11 @@ public class AddCustomerPanelValidator {
             if (age > 0){
                 return true;
             } else {
-                errorMessage("La edad tiene que ser un número positivo", "Error");
+                warningMessage("La edad tiene que ser un número positivo", "Error");
                 return false;
             }
         } catch (NumberFormatException ex){
-            errorMessage("La edad tiene que ser un número", "Error");
+            warningMessage("La edad tiene que ser un número", "Error");
             return false;
         }
     }
@@ -89,7 +89,7 @@ public class AddCustomerPanelValidator {
         Customer customer = CustomerService.read(dni);
 
         if (customer != null) {
-            errorMessage("El cliente ya está registrado", "Error");
+            warningMessage("El cliente ya está registrado", "Error");
             return true;
         } else {
             return false;

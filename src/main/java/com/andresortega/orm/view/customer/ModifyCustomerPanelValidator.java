@@ -1,6 +1,6 @@
 package com.andresortega.orm.view.customer;
 
-import static com.andresortega.orm.view.util.Dialog.errorMessage;
+import static com.andresortega.orm.view.util.Dialog.warningMessage;
 
 /**
  *
@@ -30,7 +30,7 @@ public class ModifyCustomerPanelValidator {
         String text = str.trim();
 
         if (text.length() != DNI_LENGTH) {
-            errorMessage("Número de carácteres en dni es " + DNI_LENGTH + ".", "Error");
+            warningMessage("Número de carácteres en dni es " + DNI_LENGTH + ".", "Error");
             return false;
         }
 
@@ -41,7 +41,7 @@ public class ModifyCustomerPanelValidator {
         String text = str.trim();
 
         if (text.length() > NAME_LENGTH) {
-            errorMessage("Número máximo de carácteres en nombre es " + NAME_LENGTH + ".", "Error");
+            warningMessage("Número máximo de carácteres en nombre es " + NAME_LENGTH + ".", "Error");
             return false;
         }
 
@@ -52,7 +52,7 @@ public class ModifyCustomerPanelValidator {
         String text = str.trim();
 
         if (text.length() > AGE_LENGTH) {
-            errorMessage("Número máximo de carácteres en edad es " + AGE_LENGTH + ".", "Error");
+            warningMessage("Número máximo de carácteres en edad es " + AGE_LENGTH + ".", "Error");
             return false;
         }
         try {
@@ -61,14 +61,14 @@ public class ModifyCustomerPanelValidator {
             if (age > 0) {
                 return true;
             } else {
-                errorMessage("La edad tiene que ser un número positivo", "Error");
+                warningMessage("La edad tiene que ser un número positivo", "Error");
                 return false;
             }
         } catch (NumberFormatException ex) {
             if (text.length() <= 0) {
                 return true;
             } else {
-                errorMessage("La edad tiene que ser un número", "Error");
+                warningMessage("La edad tiene que ser un número", "Error");
                 return false;
             }
         }
@@ -77,7 +77,7 @@ public class ModifyCustomerPanelValidator {
     public static boolean isRowSelected(int selectedRow) {
 
         if (selectedRow == -1) {
-            errorMessage("Selecciona una fila en la tabla.", "Error");
+            warningMessage("Selecciona una fila en la tabla.", "Error");
             return false;
         } else {
             return true;

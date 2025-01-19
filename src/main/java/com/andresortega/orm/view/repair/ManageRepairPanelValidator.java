@@ -7,7 +7,7 @@ package com.andresortega.orm.view.repair;
 
 import com.andresortega.controller.RepairService;
 import com.andresortega.model.Repair;
-import static com.andresortega.orm.view.util.Dialog.errorMessage;
+import static com.andresortega.orm.view.util.Dialog.warningMessage;
 
 
 
@@ -27,7 +27,7 @@ public class ManageRepairPanelValidator {
     public static boolean isEngineTypeValid(int selectedIndex) {
 
         if (selectedIndex == -1) {
-            errorMessage("Selecciona un estado de reparación.", "Error");
+            warningMessage("Selecciona un estado de reparación.", "Error");
             return false;
         }
 
@@ -37,7 +37,7 @@ public class ManageRepairPanelValidator {
     public static boolean isRowSelected(int selectedRow) {
         
         if (selectedRow == -1) {
-            errorMessage("Selecciona una fila en la tabla.", "Error");
+            warningMessage("Selecciona una fila en la tabla.", "Error");
             return false;
         } else {
             return true;
@@ -47,7 +47,7 @@ public class ManageRepairPanelValidator {
     public static boolean isUpdateRestricted(Repair r){
         
         if (repairIsPickedUp(r)) {
-            errorMessage("El coche ya no está en el taller.", "Error");
+            warningMessage("El coche ya no está en el taller.", "Error");
             return true;
         }
         

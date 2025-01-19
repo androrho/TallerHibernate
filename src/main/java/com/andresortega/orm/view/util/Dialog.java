@@ -17,12 +17,12 @@ public class Dialog {
     final static String INFO_IMAGE_PATH = "src/main/resources/images/info.png";
     final static String ERROR_IMAGE_PATH = "src/main/resources/images/error.png";
     
-    public static void warningMessage(String message, String title) {
-        ImageIcon icon = new ImageIcon(WARNING_IMAGE_PATH);
+    public static void errorMessage(String message, String title) {
+        ImageIcon icon = new ImageIcon(ERROR_IMAGE_PATH);
         JOptionPane.showMessageDialog(null, message, title, JOptionPane.WARNING_MESSAGE, icon);
     }
     
-    public static void errorMessage(String message, String title) {
+    public static void warningMessage(String message, String title) {
         ImageIcon icon = new ImageIcon(WARNING_IMAGE_PATH);
         JOptionPane.showMessageDialog(null, message, title, JOptionPane.WARNING_MESSAGE, icon);
     }

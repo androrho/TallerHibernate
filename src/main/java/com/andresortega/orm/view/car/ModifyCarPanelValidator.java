@@ -2,7 +2,7 @@ package com.andresortega.orm.view.car;
 
 import com.andresortega.controller.CarService;
 import com.andresortega.model.Car;
-import static com.andresortega.orm.view.util.Dialog.errorMessage;
+import static com.andresortega.orm.view.util.Dialog.warningMessage;
 
 /**
  *
@@ -35,7 +35,7 @@ public class ModifyCarPanelValidator {
         String text = str.trim();
 
         if (text.length() > LICENSE_PLATE_LENGTH) {
-            errorMessage("Número máximo de carácteres en matrícula es " + LICENSE_PLATE_LENGTH + ".", "Error");
+            warningMessage("Número máximo de carácteres en matrícula es " + LICENSE_PLATE_LENGTH + ".", "Error");
             return false;
         }
 
@@ -46,7 +46,7 @@ public class ModifyCarPanelValidator {
         String text = str.trim();
         
         if (text.length() > BRAND_LENGTH) {
-            errorMessage("Número máximo de carácteres en marca es " + BRAND_LENGTH + ".", "Error");
+            warningMessage("Número máximo de carácteres en marca es " + BRAND_LENGTH + ".", "Error");
             return false;
         }
 
@@ -57,7 +57,7 @@ public class ModifyCarPanelValidator {
         String text = str.trim();
 
         if (text.length() > MODEL_LENGTH) {
-            errorMessage("Número máximo de carácteres en modelo es " + MODEL_LENGTH + ".", "Error");
+            warningMessage("Número máximo de carácteres en modelo es " + MODEL_LENGTH + ".", "Error");
             return false;
         }
 
@@ -72,7 +72,7 @@ public class ModifyCarPanelValidator {
     public static boolean isRowSelected(int selectedRow) {
         
         if (selectedRow == -1) {
-            errorMessage("Selecciona una fila en la tabla.", "Error");
+            warningMessage("Selecciona una fila en la tabla.", "Error");
             return false;
         } else {
             return true;
@@ -84,7 +84,7 @@ public class ModifyCarPanelValidator {
         Car car = CarService.read(licensePlate);
 
         if (car != null) {
-            errorMessage("El coche ya está registrado", "Error");
+            warningMessage("El coche ya está registrado", "Error");
             return true;
         } else {
             return false;
