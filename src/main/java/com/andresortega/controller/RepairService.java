@@ -271,7 +271,7 @@ public class RepairService {
             tx.begin();
             String sql = "SELECT COUNT(*) FROM Repairs WHERE repairId = :repairId AND repairState = 4";
             count = (Integer) em.createNativeQuery(sql, Integer.class)
-                    .setParameter("carId", r.getCar().getCarId())
+                    .setParameter("repairId", r.getRepairId())
                     .getSingleResult();
             tx.commit();
         } catch (NoResultException e) {
