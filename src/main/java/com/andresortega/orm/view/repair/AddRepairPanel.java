@@ -26,6 +26,7 @@ public class AddRepairPanel extends javax.swing.JPanel {
         initComboBoxModel();
         initComponents();
         initComboBoxData();
+        cleanFields();
     }
 
     private void initComboBoxModel() {
@@ -160,6 +161,8 @@ public class AddRepairPanel extends javax.swing.JPanel {
         }
 
         saveRepair();
+        infoMessage("Reparación guardada", "Información");
+        cleanFields();
     }
 
     private boolean areFieldsValid() {
@@ -190,10 +193,6 @@ public class AddRepairPanel extends javax.swing.JPanel {
 
         Repair r = new Repair(car, customer, price, description);
         RepairService.create(r);
-
-        infoMessage("Reparación guardada", "Información");
-
-        cleanFields();
     }
 
     private void cleanFields() {
