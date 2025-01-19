@@ -110,12 +110,6 @@ public class AddCustomerPanel extends javax.swing.JPanel {
     private void btnCleanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCleanActionPerformed
         cleanFields();
     }//GEN-LAST:event_btnCleanActionPerformed
-
-    private void cleanFields(){
-        txtDNI.setText("");
-        txtName.setText("");
-        txtAge.setText("");
-    }
     
     private void save(){
         if (!areFieldsValid()){
@@ -125,6 +119,8 @@ public class AddCustomerPanel extends javax.swing.JPanel {
             return;
         }
         saveCustomer();
+        infoMessage("Cliente guardado", "Información");
+        cleanFields();
     }
     
     private boolean areFieldsValid(){
@@ -147,10 +143,13 @@ public class AddCustomerPanel extends javax.swing.JPanel {
         
         Customer customer = new Customer(dni, name, age);
         CustomerService.create(customer);
-        
-        infoMessage("Cliente guardado", "Información");
-        
-        cleanFields();
+    }
+    
+    
+    private void cleanFields(){
+        txtDNI.setText("");
+        txtName.setText("");
+        txtAge.setText("");
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
