@@ -5,13 +5,13 @@
 package com.andresortega.orm.view.repair;
 
 import com.andresortega.controller.RepairService;
-import com.andresortega.model.Car;
-import com.andresortega.model.EngineType;
 import com.andresortega.model.Repair;
 import com.andresortega.model.RepairState;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
 
 /**
  *
@@ -29,6 +29,7 @@ public class ManageRepairPanel extends javax.swing.JPanel {
         initComponents();
         initTableModelData();
         cmbRepairState.setSelectedIndex(-1);
+        setColumnWidths(jTable1, 70, 70, 70, 100, 400, 70);
     }
 
     private void initComboBoxModel(){
@@ -64,6 +65,13 @@ public class ManageRepairPanel extends javax.swing.JPanel {
             modelTableRepairs.addRow(array);
         }
     }
+    
+    private void setColumnWidths(JTable table, int... widths) {
+    TableColumnModel columnModel = table.getColumnModel();
+    for (int i = 0; i < widths.length; i++) {
+        columnModel.getColumn(i).setMaxWidth(widths[i]);
+    }
+}
     
     /**
      * This method is called from within the constructor to initialize the form.
