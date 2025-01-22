@@ -4,6 +4,8 @@ import com.andresortega.orm.controller.RepairService;
 import com.andresortega.orm.model.Repair;
 import com.andresortega.orm.model.RepairState;
 import static com.andresortega.orm.view.util.Dialog.infoMessage;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTable;
@@ -28,7 +30,7 @@ public class ManageRepairPanel extends javax.swing.JPanel {
         initComponents();
         initTableModelData();
         cleanFields();
-        setColumnWidths(jTable1, -1, 70, 70, 70, 100, 400, 70);
+        setColumnWidths(jTable1, -1, 70, 70, 70, 150, 350, 70);
     }
 
     private void initComboBoxModel() {
@@ -48,15 +50,16 @@ public class ManageRepairPanel extends javax.swing.JPanel {
     }
 
     private void initTableModelData() {
+        DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("H:m:s d/M/y");
         List<Repair> repairs = RepairService.read();
         for (int i = 0; i < repairs.size(); i++) {
             Repair repair = repairs.get(i);
-
+            
             String id = String.valueOf(repair.getRepairId());
             String customer = repair.getCustomer().toString();
             String car = repair.getCar().toString();
             String price = String.valueOf(repair.getPrice());
-            String timeStamp = repair.getDate().toString();
+            String timeStamp = repair.getDate().format(dateFormat);
             String description = repair.getDescription();
             String repairState = repair.getRepairState().toString();
 
