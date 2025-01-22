@@ -36,7 +36,7 @@ public class Repair {
             foreignKey = @ForeignKey(name = "fk_car"))
     private Car car;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "customerId", referencedColumnName = "customerId",
             foreignKey = @ForeignKey(name = "fk_customer"))
     private Customer customer;
