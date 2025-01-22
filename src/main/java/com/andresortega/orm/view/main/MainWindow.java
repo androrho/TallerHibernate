@@ -41,7 +41,6 @@ public class MainWindow extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         mnuAddRepair = new javax.swing.JMenuItem();
-        mnuModifyRepair = new javax.swing.JMenuItem();
         mnuManageRepair = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         mnuAddCustomer = new javax.swing.JMenuItem();
@@ -75,14 +74,6 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
         jMenu1.add(mnuAddRepair);
-
-        mnuModifyRepair.setText("Modificar Reparaciones");
-        mnuModifyRepair.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mnuModifyRepairActionPerformed(evt);
-            }
-        });
-        jMenu1.add(mnuModifyRepair);
 
         mnuManageRepair.setText("Gestionar Reparaciones");
         mnuManageRepair.addActionListener(new java.awt.event.ActionListener() {
@@ -154,12 +145,6 @@ public class MainWindow extends javax.swing.JFrame {
         panel = new AddRepairPanel();
         addPanel(panel);
     }//GEN-LAST:event_mnuAddRepairActionPerformed
-
-    private void mnuModifyRepairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuModifyRepairActionPerformed
-        deletePanels();
-        panel = new ModifyRepairPanel();
-        addPanel(panel);
-    }//GEN-LAST:event_mnuModifyRepairActionPerformed
 
     private void mnuManageRepairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuManageRepairActionPerformed
         deletePanels();
@@ -275,6 +260,5 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JMenuItem mnuManageRepair;
     private javax.swing.JMenuItem mnuModifyCar;
     private javax.swing.JMenuItem mnuModifyCustomer;
-    private javax.swing.JMenuItem mnuModifyRepair;
     // End of variables declaration//GEN-END:variables
 }
