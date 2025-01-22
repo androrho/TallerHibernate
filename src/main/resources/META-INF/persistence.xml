@@ -5,9 +5,9 @@
             Persistence unit for the Jakarta Persistence tutorial of the Hibernate Getting Started Guide
         </description>
     <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-    <class>com.andresortega.model.Car</class>
-    <class>com.andresortega.model.Customer</class>
-    <class>com.andresortega.model.Repair</class>
+    <class>com.andresortega.orm.model.Car</class>
+    <class>com.andresortega.orm.model.Repair</class>
+    <class>com.andresortega.orm.model.Customer</class>
     <properties>
       <!-- Database connection settings -->
       <!-- Automatically export the schema -->

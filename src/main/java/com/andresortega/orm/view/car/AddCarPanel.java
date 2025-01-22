@@ -1,8 +1,8 @@
 package com.andresortega.orm.view.car;
 
-import com.andresortega.controller.CarService;
-import com.andresortega.model.Car;
-import com.andresortega.model.EngineType;
+import com.andresortega.orm.controller.CarService;
+import com.andresortega.orm.model.Car;
+import com.andresortega.orm.model.EngineType;
 import static com.andresortega.orm.view.util.Dialog.infoMessage;
 import javax.swing.DefaultComboBoxModel;
 

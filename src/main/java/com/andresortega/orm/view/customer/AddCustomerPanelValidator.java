@@ -1,7 +1,7 @@
 package com.andresortega.orm.view.customer;
 
-import com.andresortega.controller.CustomerService;
-import com.andresortega.model.Customer;
+import com.andresortega.orm.controller.CustomerService;
+import com.andresortega.orm.model.Customer;
 import static com.andresortega.orm.view.util.Dialog.errorMessage;
 import static com.andresortega.orm.view.util.Dialog.warningMessage;
 

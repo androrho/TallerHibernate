@@ -1,9 +1,9 @@
 package com.andresortega.orm.view.car;
 
-import com.andresortega.controller.CarService;
-import com.andresortega.controller.RepairService;
-import com.andresortega.model.Car;
-import com.andresortega.model.Repair;
+import com.andresortega.orm.controller.CarService;
+import com.andresortega.orm.controller.RepairService;
+import com.andresortega.orm.model.Car;
+import com.andresortega.orm.model.Repair;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;

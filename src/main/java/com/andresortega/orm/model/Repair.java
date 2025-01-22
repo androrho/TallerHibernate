@@ -1,4 +1,4 @@
-package com.andresortega.model;
+package com.andresortega.orm.model;
 
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;

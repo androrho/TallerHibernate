@@ -1,11 +1,11 @@
 package com.andresortega.orm.view.repair;
 
-import com.andresortega.controller.CarService;
-import com.andresortega.controller.CustomerService;
-import com.andresortega.controller.RepairService;
-import com.andresortega.model.Car;
-import com.andresortega.model.Customer;
-import com.andresortega.model.Repair;
+import com.andresortega.orm.controller.CarService;
+import com.andresortega.orm.controller.CustomerService;
+import com.andresortega.orm.controller.RepairService;
+import com.andresortega.orm.model.Car;
+import com.andresortega.orm.model.Customer;
+import com.andresortega.orm.model.Repair;
 import static com.andresortega.orm.view.util.Dialog.errorMessage;
 import static com.andresortega.orm.view.util.Dialog.warningMessage;
 

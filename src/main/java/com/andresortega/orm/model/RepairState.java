@@ -1,4 +1,4 @@
-package com.andresortega.model;
+package com.andresortega.orm.model;
 
 /**
  *

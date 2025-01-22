@@ -1,8 +1,8 @@
 package com.andresortega.orm.view.repair;
 
-import com.andresortega.controller.RepairService;
-import com.andresortega.model.Repair;
-import com.andresortega.model.RepairState;
+import com.andresortega.orm.controller.RepairService;
+import com.andresortega.orm.model.Repair;
+import com.andresortega.orm.model.RepairState;
 import static com.andresortega.orm.view.util.Dialog.infoMessage;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;

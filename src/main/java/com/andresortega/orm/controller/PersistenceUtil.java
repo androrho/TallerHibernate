@@ -1,4 +1,4 @@
-package com.andresortega.controller;
+package com.andresortega.orm.controller;
 
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;

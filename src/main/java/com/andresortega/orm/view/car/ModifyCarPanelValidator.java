@@ -1,7 +1,7 @@
 package com.andresortega.orm.view.car;
 
-import com.andresortega.controller.CarService;
-import com.andresortega.model.Car;
+import com.andresortega.orm.controller.CarService;
+import com.andresortega.orm.model.Car;
 import static com.andresortega.orm.view.util.Dialog.errorMessage;
 import static com.andresortega.orm.view.util.Dialog.warningMessage;
 

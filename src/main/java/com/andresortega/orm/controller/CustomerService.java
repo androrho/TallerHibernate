@@ -1,6 +1,6 @@
-package com.andresortega.controller;
+package com.andresortega.orm.controller;
 
-import com.andresortega.model.Customer;
+import com.andresortega.orm.model.Customer;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.NoResultException;
