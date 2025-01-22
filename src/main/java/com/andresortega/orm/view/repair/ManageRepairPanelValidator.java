@@ -1,12 +1,9 @@
 package com.andresortega.orm.view.repair;
 
-
 import com.andresortega.orm.controller.RepairService;
 import com.andresortega.orm.model.Repair;
 import static com.andresortega.orm.view.util.Dialog.errorMessage;
 import static com.andresortega.orm.view.util.Dialog.warningMessage;
-
-
 
 /**
  *

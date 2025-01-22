@@ -13,30 +13,6 @@ import java.util.List;
  */
 public class CarService {
 
-    public static String getBrand(String licensePlate) {
-        Car car = CarService.read(licensePlate);
-        if (car != null) {
-            return "[\n   {\n      \"licensePlate\":" + licensePlate + ",\n      \"type\":\"car\",\n      \"brand\": \"" + car.getBrand() + "\",\n      \"query\":\"success\"\n   }\n]";
-        }
-        return "[\n   {\n      \"licensePlate\":" + licensePlate + ",\n      \"type\":\"car\",\n      \"query\":\"failed\"\n   }\n]";
-    }
-
-    public static String getModel(String licensePlate) {
-        Car car = CarService.read(licensePlate);
-        if (car != null) {
-            return "[\n   {\n      \"licensePlate\":" + licensePlate + ",\n      \"type\":\"car\",\n      \"model\": \"" + car.getModel() + "\",\n      \"query\":\"success\"\n   }\n]";
-        }
-        return "[\n   {\n      \"licensePlate\":" + licensePlate + ",\n      \"type\":\"car\",\n      \"query\":\"failed\"\n   }\n]";
-    }
-
-    public static String getEngineType(String licensePlate) {
-        Car car = CarService.read(licensePlate);
-        if (car != null) {
-            return "[\n   {\n      \"licensePlate\":" + licensePlate + ",\n      \"type\":\"car\",\n      \"engineType\": \"" + car.getEngineType() + "\",\n      \"query\":\"success\"\n   }\n]";
-        }
-        return "[\n   {\n      \"licensePlate\":" + licensePlate + ",\n      \"type\":\"car\",\n      \"query\":\"failed\"\n   }\n]";
-    }
-
     public static void create(Car object) {
         EntityManager em = PersistenceUtil.getEntityManagerFactory().createEntityManager();
         EntityTransaction tx = em.getTransaction();
@@ -109,46 +85,5 @@ public class CarService {
         tx.commit();
         em.close();
     }
-
-    public static boolean delete(String licensePlate) {
-        EntityManager em = PersistenceUtil.getEntityManagerFactory().createEntityManager();
-        EntityTransaction tx = em.getTransaction();
-        boolean deleted = false;
-
-        try {
-            tx.begin();
-            String hql = "DELETE FROM Car c WHERE c.licensePlate = :licensePlate";
-            int rowsAffected = em.createQuery(hql)
-                    .setParameter("licensePlate", licensePlate)
-                    .executeUpdate();
-            tx.commit();
-            deleted = rowsAffected > 0;
-        } catch (Exception e) {
-            tx.rollback();
-        } finally {
-            em.close();
-        }
-        return deleted;
-    }
-
-    public static void delete(Car object) {
-        EntityManager em = PersistenceUtil.getEntityManagerFactory().createEntityManager();
-        EntityTransaction tx = em.getTransaction();
-        tx.begin();
-        em.remove(em.find(Object.class, object.getCarId()));
-        tx.commit();
-        em.close();
-    }
-
-    /* ACTUALMENTE NO SIRVE PERO LO DEJO
-public static List<Car> findByName(String name) {
-    EntityManager em = PersistenceUtil.getEntityManagerFactory().createEntityManager();
-    EntityTransaction tx = em.getTransaction();
-    tx.begin();
-    List<Car> list = em.createQuery("SELECT c FROM Car c WHERE c.name LIKE :name").setParameter("name", "%" + name + "%").getResultList();
-    tx.commit();
-    em.close();
-    return list;
-}
-     */
+    
 }

@@ -13,22 +13,6 @@ import java.util.List;
  */
 public class CustomerService {
 
-    public static String getName(String dni) {
-        Customer customer = CustomerService.read(dni);
-        if (customer != null) {
-            return "[\n   {\n      \"dni\":" + dni + ",\n      \"type\":\"customer\",\n      \"name\": \"" + customer.getName() + "\",\n      \"query\":\"success\"\n   }\n]";
-        }
-        return "[\n   {\n      \"dni\":" + dni + ",\n      \"type\":\"customer\",\n      \"query\":\"failed\"\n   }\n]";
-    }
-
-    public static String getAge(String dni) {
-        Customer customer = CustomerService.read(dni);
-        if (customer != null) {
-            return "[\n   {\n      \"dni\":" + dni + ",\n      \"type\":\"customer\",\n      \"age\": \"" + customer.getAge() + "\",\n      \"query\":\"success\"\n   }\n]";
-        }
-        return "[\n   {\n      \"dni\":" + dni + ",\n      \"type\":\"customer\",\n      \"query\":\"failed\"\n   }\n]";
-    }
-
     public static void create(Customer object) {
         EntityManager em = PersistenceUtil.getEntityManagerFactory().createEntityManager();
         EntityTransaction tx = em.getTransaction();
@@ -101,47 +85,5 @@ public class CustomerService {
         tx.commit();
         em.close();
     }
-
-    public static boolean delete(String dni) {
-        EntityManager em = PersistenceUtil.getEntityManagerFactory().createEntityManager();
-        EntityTransaction tx = em.getTransaction();
-        boolean deleted = false;
-        
-        try {
-            tx.begin();
-        String hql = "DELETE FROM Customer c WHERE c.dni = :dni";
-        int rowsAffected = em.createQuery(hql)
-                .setParameter("dni", dni)
-                .executeUpdate();
-        tx.commit();
-        deleted = rowsAffected > 0;
-        } catch (Exception e) {
-            tx.rollback();
-        } finally {
-            em.close();
-        }
-        
-        return deleted;
-    }
-
-    public static void delete(Customer object) {
-        EntityManager em = PersistenceUtil.getEntityManagerFactory().createEntityManager();
-        EntityTransaction tx = em.getTransaction();
-        tx.begin();
-        em.remove(em.find(Object.class, object.getDni()));
-        tx.commit();
-        em.close();
-    }
-
-    /* ACTUALMENTE NO SIRVE PERO LO DEJO
-public static List<Car> findByName(String name) {
-    EntityManager em = PersistenceUtil.getEntityManagerFactory().createEntityManager();
-    EntityTransaction tx = em.getTransaction();
-    tx.begin();
-    List<Car> list = em.createQuery("SELECT c FROM Car c WHERE c.name LIKE :name").setParameter("name", "%" + name + "%").getResultList();
-    tx.commit();
-    em.close();
-    return list;
-}
-     */
+    
 }
