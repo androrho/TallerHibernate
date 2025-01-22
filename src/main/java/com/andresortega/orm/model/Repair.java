@@ -63,7 +63,7 @@ public class Repair {
 
     public Repair() {
         this.date = LocalDateTime.now();
-        this.repairState = RepairState.PENDING;
+        this.repairState = RepairState.PENDIENTE;
     }
 
     public Repair(Car car, Customer customer, Float price, String description) {
@@ -72,7 +72,7 @@ public class Repair {
         this.price = price;
         this.date = LocalDateTime.now();
         this.description = description;
-        this.repairState = RepairState.PENDING;
+        this.repairState = RepairState.PENDIENTE;
     }
     
     public Repair(Car car, Customer customer, Float price, LocalDateTime date, String description, RepairState repairState) {
