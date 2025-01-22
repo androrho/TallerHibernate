@@ -29,7 +29,7 @@ public class ModifyCustomerPanelValidator {
     private static boolean isDniValid(String str) {
         String text = str.trim();
 
-        if (text.length() != DNI_LENGTH) {
+        if (text.length() > DNI_LENGTH) {
             warningMessage("Número de carácteres en dni es " + DNI_LENGTH + ".", "Advertencia");
             return false;
         }
