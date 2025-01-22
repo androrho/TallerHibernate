@@ -15,10 +15,10 @@
       <property name="hibernate.show_sql" value="true"/>
       <property name="hibernate.format_sql" value="true"/>
       <property name="hibernate.highlight_sql" value="true"/>
-      <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://andresortega.dev:3306/garage?zeroDateTimeBehavior=CONVERT_TO_NULL"/>
-      <property name="jakarta.persistence.jdbc.user" value="root"/>
+      <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/garage?zeroDateTimeBehavior=CONVERT_TO_NULL"/>
+      <property name="jakarta.persistence.jdbc.user" value="userjava"/>
       <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
-      <property name="jakarta.persistence.jdbc.password" value="im)Qq~Ac,{;OwDv31u"/>
+      <property name="jakarta.persistence.jdbc.password" value="SQLPassword"/>
     </properties>
   </persistence-unit>
 </persistence>
