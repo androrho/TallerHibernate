@@ -7,7 +7,6 @@ import com.andresortega.orm.view.customer.AddCustomerPanel;
 import com.andresortega.orm.view.customer.ModifyCustomerPanel;
 import com.andresortega.orm.view.repair.AddRepairPanel;
 import com.andresortega.orm.view.repair.ManageRepairPanel;
-import com.andresortega.orm.view.repair.ModifyRepairPanel;
 import java.awt.Component;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
