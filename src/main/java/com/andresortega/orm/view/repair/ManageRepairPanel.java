@@ -57,7 +57,7 @@ public class ManageRepairPanel extends javax.swing.JPanel {
             String id = String.valueOf(repair.getRepairId());
             String customer = repair.getCustomer().toString();
             String car = repair.getCar().toString();
-            String price = String.valueOf(repair.getPrice());
+            String price = String.valueOf(repair.getPrice()) + " €";
             String timeStamp = repair.getDate().format(dateFormat);
             String description = repair.getDescription();
             String repairState = repair.getRepairState().toString();
